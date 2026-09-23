@@ -127,37 +127,42 @@
 }
 .footer {
   border-top: 1px solid var(--line);
-  height: 74px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   color: var(--muted);
   font:
     9px "DM Mono",
     monospace;
   letter-spacing: 0.05em;
 }
+.footer-main {
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .footer b {
   color: var(--blue);
   font-size: 15px;
   margin-left: 7px;
 }
-.footer a {
+.footer-main > a {
   display: flex;
   align-items: center;
   gap: 9px;
 }
-.footer a svg {
+.footer-main > a svg {
   width: 13px;
 }
-.footer .footer-record {
-  display: inline;
-  margin-left: 8px;
+.footer-records {
+  display: flex;
+  justify-content: center;
+  padding: 0 0 22px;
+}
+.footer-record {
   color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.08em;
 }
-.footer .footer-record:hover {
-  color: var(--blue);
-}
+.footer-record:hover { color: var(--blue); }
 .games-section {
   background: var(--paper-deep);
   color: var(--ink);

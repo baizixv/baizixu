@@ -287,11 +287,13 @@
   .mail-button svg:last-child {
     margin-left: 0;
   }
-  .footer {
+  .footer-main {
     height: auto;
-    min-height: 82px;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
     padding: 20px 0;
+  }
+  .footer-records {
+    padding: 0 0 24px;
   }
 }
