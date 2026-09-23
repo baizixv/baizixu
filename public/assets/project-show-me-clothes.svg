@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" role="img" aria-label="ShowMeClothes AI 试穿项目封面">
+  <rect width="900" height="600" fill="#f0dee0" />
+  <g fill="none" stroke="#b65d68" stroke-width="3">
+    <rect x="52" y="50" width="796" height="500" rx="8" />
+    <line x1="70" y1="122" x2="830" y2="122" stroke-width="2" />
+    <line x1="70" y1="462" x2="830" y2="462" stroke-width="2" />
+  </g>
+  <text x="78" y="90" fill="#b65d68" font-family="Manrope, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="2">AI VIRTUAL TRY-ON / PHOTO TO VIDEO</text>
+  <rect x="250" y="160" width="400" height="245" rx="12" fill="#f4f1eb" stroke="#b65d68" stroke-width="3" />
+  <g fill="none" stroke="#b65d68" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M450 200 v-6 a11 11 0 1 1 11 11" />
+    <path d="M450 200 L392 236 L508 236 Z" />
+  </g>
+  <path d="M405 252 L435 234 Q450 254 465 234 L495 252 L522 276 L500 296 L490 286 L490 356 Q450 370 410 356 L410 286 L400 296 L378 276 Z" fill="#cfd9ec" stroke="#b65d68" stroke-width="4" stroke-linejoin="round" />
+  <circle cx="585" cy="342" r="26" fill="#b65d68" />
+  <path d="M578 330 L601 342 L578 354 Z" fill="#ffffff" />
+  <text x="78" y="508" fill="#17191c" font-family="Manrope, Arial, sans-serif" font-size="24" font-weight="700">ShowMeClothes</text>
+  <text x="780" y="512" fill="#b65d68" font-family="Manrope, Arial, sans-serif" font-size="32" font-weight="700" text-anchor="middle">06</text>
+</svg>

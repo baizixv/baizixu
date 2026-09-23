@@ -80,6 +80,7 @@ body.dark {
 .projects-section .project-info > svg { color: #bbc5db; }
 .projects-section .project-type { color: #bbc5db; }
 .projects-section .visual-extension { background: #454b5a; color: #e0e5f0; }
+.projects-section .visual-clothes { background: #5a4648; color: #f0dee0; }
 .projects-section .extension-tabs { color: #bbc5db; }
 
 .games-section {
