@@ -150,6 +150,14 @@
 .footer a svg {
   width: 13px;
 }
+.footer .footer-record {
+  display: inline;
+  margin-left: 8px;
+  color: var(--muted);
+}
+.footer .footer-record:hover {
+  color: var(--blue);
+}
 .games-section {
   background: var(--paper-deep);
   color: var(--ink);
