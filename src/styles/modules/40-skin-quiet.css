@@ -1,0 +1,205 @@
+/* 40 Skin: quiet — tokens, type and shell
+ * 静音纸感：单一低饱和强调色、去掉描边与投影、靠留白组织内容。
+ * 增量覆盖 31-35 的粗野基层，只改视觉不改布局。最后导入。
+ */
+html[data-skin="quiet"] {
+  background: #f6f5f2;
+}
+html[data-skin="quiet"] body {
+  --paper: #f6f5f2;
+  --paper-deep: #eeebe5;
+  --white: #ffffff;
+  --ink: #1b1b19;
+  --muted: #75736d;
+  --line: #e3e0d9;
+  --dark: #1b1b19;
+  --blue: #5b6b8c;
+  --yellow: #8c8880;
+  --pink: #948b87;
+  --green: #7f8880;
+  --accent-soft: #eef0f4;
+  --shadow-sm: none;
+  --shadow: none;
+  background: var(--paper);
+  color: var(--ink);
+}
+html[data-skin="quiet"][data-theme="dark"] body,
+html[data-skin="quiet"] body.dark {
+  --paper: #151514;
+  --paper-deep: #1e1e1c;
+  --white: #1a1a18;
+  --ink: #eceae4;
+  --muted: #9b9891;
+  --line: #2c2b28;
+  --dark: #0f0f0e;
+  --blue: #93a5c6;
+  --yellow: #a09c93;
+  --pink: #a89f9b;
+  --green: #98a29a;
+  --accent-soft: #21232a;
+}
+
+/* Type ------------------------------------------------------------------- */
+html[data-skin="quiet"] h1,
+html[data-skin="quiet"] h2,
+html[data-skin="quiet"] h3,
+html[data-skin="quiet"] h4 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+html[data-skin="quiet"] .hero h1 {
+  letter-spacing: -0.03em;
+}
+html[data-skin="quiet"] .section-heading h2,
+html[data-skin="quiet"] .stats dd,
+html[data-skin="quiet"] .game-info h3,
+html[data-skin="quiet"] .project-info h3 {
+  font-weight: 700;
+}
+html[data-skin="quiet"] .eyebrow,
+html[data-skin="quiet"] .projects-section .eyebrow,
+html[data-skin="quiet"] .games-section .games-heading .eyebrow,
+html[data-skin="quiet"] .media-library-section .eyebrow,
+html[data-skin="quiet"] .tools-section .eyebrow,
+html[data-skin="quiet"] .ideas-section .eyebrow {
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+/* Shell ------------------------------------------------------------------ */
+html[data-skin="quiet"] .topbar {
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+html[data-skin="quiet"] .brand-mark {
+  background: transparent;
+  border: 0;
+}
+html[data-skin="quiet"] .main-nav {
+  gap: 30px;
+}
+html[data-skin="quiet"] .main-nav a,
+html[data-skin="quiet"] .main-nav a:hover,
+html[data-skin="quiet"] .main-nav a.active {
+  padding: 8px 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-family: "Manrope", "Noto Sans SC", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+}
+html[data-skin="quiet"] .main-nav a:hover,
+html[data-skin="quiet"] .main-nav a.active {
+  color: var(--ink);
+}
+html[data-skin="quiet"] .icon-button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+}
+html[data-skin="quiet"] .icon-button:hover {
+  color: var(--ink);
+  box-shadow: none;
+  transform: none;
+}
+html[data-skin="quiet"] .search-box {
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+}
+html[data-skin="quiet"] .search-box:focus-within {
+  box-shadow: none;
+  border-bottom-color: var(--muted);
+}
+html[data-skin="quiet"] kbd {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* Buttons, links, tags --------------------------------------------------- */
+html[data-skin="quiet"] .button,
+html[data-skin="quiet"] .mail-button,
+html[data-skin="quiet"] .game-launch,
+html[data-skin="quiet"] .internal-demo-link,
+html[data-skin="quiet"] .external-project-link {
+  border: 0;
+  box-shadow: none;
+  font-family: "Manrope", "Noto Sans SC", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+html[data-skin="quiet"] .button-dark {
+  background: var(--ink);
+  color: var(--paper);
+}
+html[data-skin="quiet"] .mail-button,
+html[data-skin="quiet"] .external-project-link {
+  background: var(--ink);
+  color: var(--paper);
+}
+html[data-skin="quiet"] .internal-demo-link {
+  background: var(--paper-deep);
+  color: var(--ink);
+}
+html[data-skin="quiet"] .button:hover,
+html[data-skin="quiet"] .mail-button:hover,
+html[data-skin="quiet"] .game-launch:hover,
+html[data-skin="quiet"] .internal-demo-link:hover,
+html[data-skin="quiet"] .external-project-link:hover {
+  transform: none;
+  box-shadow: none;
+  opacity: 0.85;
+}
+html[data-skin="quiet"] .text-link,
+html[data-skin="quiet"] .view-all,
+html[data-skin="quiet"] .next-link {
+  border-bottom: 0;
+  padding-bottom: 0;
+  color: var(--muted);
+  font-family: "Manrope", "Noto Sans SC", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+html[data-skin="quiet"] .text-link:hover,
+html[data-skin="quiet"] .view-all:hover,
+html[data-skin="quiet"] .next-link:hover {
+  color: var(--blue);
+}
+html[data-skin="quiet"] .back-link {
+  border-bottom: 0;
+  color: var(--muted);
+}
+html[data-skin="quiet"] .back-link:hover {
+  color: var(--ink);
+  border-bottom: 0;
+}
+html[data-skin="quiet"] .tag,
+html[data-skin="quiet"] .tag-blue,
+html[data-skin="quiet"] .tag-yellow,
+html[data-skin="quiet"] .tag-pink,
+html[data-skin="quiet"] .tag-green {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  font-weight: 600;
+}
+html[data-skin="quiet"] .circle-link {
+  border: 1px solid var(--line);
+  background: transparent;
+  box-shadow: none;
+}
+html[data-skin="quiet"] .circle-link:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}

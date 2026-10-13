@@ -1,0 +1,207 @@
+/* 42 Skin: quiet — overlays and pages
+ * 静音纸感的浮层、详情、归档、图书馆、关于与工具页。
+ */
+html[data-skin="quiet"] .footer {
+  border-top: 1px solid var(--line);
+}
+html[data-skin="quiet"] .search-panel,
+html[data-skin="quiet"] .contact-modal-card,
+html[data-skin="quiet"] .skin-panel {
+  border: 0;
+  background: var(--white);
+  box-shadow: 0 24px 60px rgb(0 0 0 / 0.1);
+}
+html[data-skin="quiet"] .search-ai-row {
+  background: transparent;
+  border-bottom: 1px solid var(--line);
+}
+html[data-skin="quiet"] .search-ai-row.active,
+html[data-skin="quiet"] .search-result.active {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+html[data-skin="quiet"] .search-kind {
+  border-color: var(--line);
+  color: var(--muted);
+}
+html[data-skin="quiet"] .contact-row {
+  border-top: 1px solid var(--line);
+}
+html[data-skin="quiet"] .contact-copy {
+  border: 0;
+  background: var(--paper-deep);
+}
+html[data-skin="quiet"] .skin-option {
+  border: 0;
+}
+html[data-skin="quiet"] .skin-option:hover,
+html[data-skin="quiet"] .skin-option.active {
+  border: 0;
+  background: var(--accent-soft);
+  box-shadow: none;
+}
+html[data-skin="quiet"] .skin-swatch {
+  border: 1px solid var(--line);
+}
+
+/* Detail and archive ----------------------------------------------------- */
+html[data-skin="quiet"] .detail-lede {
+  border-bottom: 1px solid var(--line);
+}
+html[data-skin="quiet"] .detail-cover {
+  border: 0;
+  box-shadow: none;
+}
+html[data-skin="quiet"] .detail-body h2 {
+  border-bottom: 1px solid var(--line);
+}
+html[data-skin="quiet"] .detail-body table,
+html[data-skin="quiet"] .detail-body th,
+html[data-skin="quiet"] .detail-body td {
+  border: 1px solid var(--line);
+}
+html[data-skin="quiet"] .detail-body th {
+  background: var(--paper-deep);
+  color: var(--ink);
+}
+html[data-skin="quiet"] .detail-body tr:nth-child(even) td {
+  background: transparent;
+}
+html[data-skin="quiet"] .detail-body code {
+  background: var(--paper-deep);
+  border: 0;
+}
+html[data-skin="quiet"] .detail-body pre {
+  background: var(--paper-deep);
+  color: var(--ink);
+  border: 0;
+  box-shadow: none;
+}
+html[data-skin="quiet"] .detail-body img {
+  border: 0;
+}
+html[data-skin="quiet"] .archive-list,
+html[data-skin="quiet"] .archive-project-list,
+html[data-skin="quiet"] .idea-archive-list {
+  border-top: 1px solid var(--line);
+}
+html[data-skin="quiet"] .archive-project-visual {
+  border: 0;
+}
+
+/* Library page ----------------------------------------------------------- */
+html[data-skin="quiet"] .library-catalog {
+  border-top: 1px solid var(--line);
+}
+html[data-skin="quiet"] .library-catalog-group {
+  border-bottom: 1px solid var(--line);
+}
+html[data-skin="quiet"] .library-catalog-list {
+  border-top: 1px solid var(--line);
+}
+html[data-skin="quiet"] .library-catalog-item {
+  border-top: 1px solid var(--line);
+}
+html[data-skin="quiet"] .library-catalog-item h3::before,
+html[data-skin="quiet"] .library-catalog-item.media-tone-blue h3::before,
+html[data-skin="quiet"] .library-catalog-item.media-tone-yellow h3::before,
+html[data-skin="quiet"] .library-catalog-item.media-tone-pink h3::before,
+html[data-skin="quiet"] .library-catalog-item.media-tone-green h3::before {
+  background: var(--line);
+}
+html[data-skin="quiet"] .media-type-badge,
+html[data-skin="quiet"] .media-type-badge-book,
+html[data-skin="quiet"] .media-type-badge-screen,
+html[data-skin="quiet"] .media-type-badge-music,
+html[data-skin="quiet"] .media-type-badge-game {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+}
+html[data-skin="quiet"] .media-status-done,
+html[data-skin="quiet"] .media-status-current,
+html[data-skin="quiet"] .media-status-next {
+  background: var(--paper-deep);
+  color: var(--muted);
+}
+html[data-skin="quiet"] .library-status-group {
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+html[data-skin="quiet"] .library-status-heading {
+  border-bottom: 1px solid var(--line);
+}
+html[data-skin="quiet"] .library-status-group-done .library-status-heading,
+html[data-skin="quiet"] .library-status-group-current .library-status-heading,
+html[data-skin="quiet"] .library-status-group-next .library-status-heading {
+  background: var(--paper-deep);
+  color: var(--ink);
+}
+
+/* About page ------------------------------------------------------------- */
+html[data-skin="quiet"] .about-author-block {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+html[data-skin="quiet"] .about-stats div {
+  border-left: 1px solid var(--line);
+}
+html[data-skin="quiet"] .about-progress,
+html[data-skin="quiet"] .about-releases,
+html[data-skin="quiet"] .idea-history {
+  border-top: 1px solid var(--line);
+}
+html[data-skin="quiet"] .progress-item,
+html[data-skin="quiet"] .release-item,
+html[data-skin="quiet"] .idea-history-list a {
+  border-color: var(--line);
+}
+html[data-skin="quiet"] .progress-blue,
+html[data-skin="quiet"] .progress-yellow,
+html[data-skin="quiet"] .progress-pink {
+  background: var(--paper-deep);
+  color: var(--muted);
+}
+html[data-skin="quiet"] .bar-blue,
+html[data-skin="quiet"] .bar-yellow,
+html[data-skin="quiet"] .bar-pink {
+  background: var(--muted);
+}
+html[data-skin="quiet"] .current-release,
+html[data-skin="quiet"] .idea-version-current {
+  border: 0;
+  background: var(--paper-deep);
+  color: var(--muted);
+}
+html[data-skin="quiet"] .about-progress-bar {
+  height: 3px;
+  border: 0;
+  background: var(--line);
+}
+
+/* Tools ------------------------------------------------------------------ */
+html[data-skin="quiet"] .tool-workbench,
+html[data-skin="quiet"] .json-workbench {
+  border-top: 1px solid var(--line);
+}
+html[data-skin="quiet"] .tool-panel {
+  border: 0;
+  box-shadow: none;
+}
+html[data-skin="quiet"] .tool-fields textarea,
+html[data-skin="quiet"] .json-column textarea {
+  border: 1px solid var(--line);
+}
+html[data-skin="quiet"] .tool-tab {
+  border: 0;
+}
+html[data-skin="quiet"] .tool-tab.active {
+  border: 0;
+  border-left: 2px solid var(--blue);
+  background: var(--accent-soft);
+}
+html[data-skin="quiet"] .tool-tab:hover {
+  border: 0;
+  background: var(--accent-soft);
+}

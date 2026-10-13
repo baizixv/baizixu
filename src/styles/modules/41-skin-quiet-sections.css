@@ -1,0 +1,237 @@
+/* 41 Skin: quiet — hero, sections and cards
+ * 静音纸感的首页区块与卡片：同底色、无边框、无投影、无彩色块。
+ */
+html[data-skin="quiet"] .status-dot {
+  background: var(--blue);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--blue) 14%, transparent);
+}
+html[data-skin="quiet"] .stats {
+  border-top: 1px solid var(--line);
+}
+html[data-skin="quiet"] .now-panel {
+  background: var(--paper-deep);
+  border: 0;
+  box-shadow: none;
+  color: var(--ink);
+}
+html[data-skin="quiet"] .now-panel .section-label,
+html[data-skin="quiet"] .now-panel .kicker,
+html[data-skin="quiet"] .now-panel .now-note,
+html[data-skin="quiet"] .now-panel .progress-meta {
+  color: var(--muted);
+}
+html[data-skin="quiet"] .pulse-line {
+  border-color: var(--line);
+}
+html[data-skin="quiet"] .now-image-wrap {
+  border: 0;
+}
+html[data-skin="quiet"] .image-tag {
+  background: var(--paper);
+  color: var(--ink);
+  border: 0;
+  font-weight: 600;
+}
+html[data-skin="quiet"] .now-image-fallback {
+  background: var(--paper-deep);
+  color: var(--muted);
+}
+html[data-skin="quiet"] .arrow-circle {
+  border: 1px solid var(--line);
+}
+html[data-skin="quiet"] .progress {
+  height: 2px;
+  border: 0;
+  background: var(--line);
+}
+html[data-skin="quiet"] .progress span {
+  background: var(--ink);
+}
+
+/* Ticker：去掉色带，只留一行淡字 */
+html[data-skin="quiet"] .ticker-band {
+  background: transparent;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+html[data-skin="quiet"] .ticker-track {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+}
+html[data-skin="quiet"] .ticker-track b {
+  color: var(--line);
+}
+
+/* 所有区块同底色，去掉分隔线和小色条 */
+html[data-skin="quiet"] .content-section,
+html[data-skin="quiet"] .projects-section,
+html[data-skin="quiet"] .games-section,
+html[data-skin="quiet"] .media-library-section,
+html[data-skin="quiet"] .tools-section,
+html[data-skin="quiet"] .library-section,
+html[data-skin="quiet"] .ideas-section,
+html[data-skin="quiet"] .about-preview {
+  border-top: 0;
+  background: var(--paper);
+}
+html[data-skin="quiet"] .projects-section {
+  background: var(--paper);
+  color: var(--ink);
+}
+html[data-skin="quiet"] .projects-section::before,
+html[data-skin="quiet"] .games-section::before,
+html[data-skin="quiet"] .media-library-section::before,
+html[data-skin="quiet"] .tools-section::before,
+html[data-skin="quiet"] .ideas-section::before {
+  display: none;
+}
+html[data-skin="quiet"] .projects-section .project-info,
+html[data-skin="quiet"] .projects-section .project-info h3,
+html[data-skin="quiet"] .projects-section .project-info p,
+html[data-skin="quiet"] .projects-section .project-info > svg,
+html[data-skin="quiet"] .projects-section .project-type,
+html[data-skin="quiet"] .projects-section .extension-tabs,
+html[data-skin="quiet"] .projects-section .view-all {
+  color: var(--ink);
+}
+html[data-skin="quiet"] .projects-section .project-info p,
+html[data-skin="quiet"] .projects-section .project-type,
+html[data-skin="quiet"] .projects-section .extension-tabs,
+html[data-skin="quiet"] .projects-section .view-all {
+  color: var(--muted);
+}
+html[data-skin="quiet"] .projects-section .project-info {
+  border-bottom: 1px solid var(--line);
+}
+html[data-skin="quiet"] .projects-section .project-visual {
+  border: 0;
+}
+html[data-skin="quiet"] .projects-section .visual-ogden {
+  background: var(--paper-deep);
+  color: var(--ink);
+}
+
+/* 卡片：去掉描边与投影，只用极浅底色区分 */
+html[data-skin="quiet"] .project-visual,
+html[data-skin="quiet"] .media-library-section .media-card,
+html[data-skin="quiet"] .media-library-section .media-empty,
+html[data-skin="quiet"] .ideas-section .idea-card,
+html[data-skin="quiet"] .media-card,
+html[data-skin="quiet"] .media-empty,
+html[data-skin="quiet"] .idea-card,
+html[data-skin="quiet"] .ideas-empty,
+html[data-skin="quiet"] .tiny-tool-card,
+html[data-skin="quiet"] .standalone-tool-card,
+html[data-skin="quiet"] .about-preview-card {
+  border: 0;
+  box-shadow: none;
+}
+html[data-skin="quiet"] .media-library-section .media-card,
+html[data-skin="quiet"] .media-library-section .media-empty,
+html[data-skin="quiet"] .ideas-section .idea-card,
+html[data-skin="quiet"] .media-card,
+html[data-skin="quiet"] .idea-card,
+html[data-skin="quiet"] .tiny-tool-card,
+html[data-skin="quiet"] .standalone-tool-card,
+html[data-skin="quiet"] .about-preview-card {
+  background: var(--white);
+}
+html[data-skin="quiet"] .media-empty,
+html[data-skin="quiet"] .ideas-empty {
+  background: transparent;
+  border: 1px dashed var(--line);
+}
+html[data-skin="quiet"] .games-section .project-visual,
+html[data-skin="quiet"] .game-card .project-visual {
+  border: 0;
+  background: var(--white);
+}
+html[data-skin="quiet"] .project-card:hover .project-visual,
+html[data-skin="quiet"] .game-card:hover .project-visual,
+html[data-skin="quiet"] .media-card:hover,
+html[data-skin="quiet"] .media-empty:hover,
+html[data-skin="quiet"] .tiny-tool-card:hover,
+html[data-skin="quiet"] .idea-card:hover {
+  transform: none;
+  box-shadow: none;
+  border: 0;
+}
+html[data-skin="quiet"] .media-card:hover,
+html[data-skin="quiet"] .tiny-tool-card:hover,
+html[data-skin="quiet"] .idea-card:hover {
+  background: var(--accent-soft);
+}
+
+/* 图标底座统一成无彩色 */
+html[data-skin="quiet"] .games-symbol,
+html[data-skin="quiet"] .tools-symbol,
+html[data-skin="quiet"] .library-icon,
+html[data-skin="quiet"] .media-card-mark,
+html[data-skin="quiet"] .tiny-tool-icon,
+html[data-skin="quiet"] .standalone-tool-icon,
+html[data-skin="quiet"] .ideas-empty-icon,
+html[data-skin="quiet"] .idea-detail-icon,
+html[data-skin="quiet"] .library-catalog-icon {
+  border: 0;
+  background: var(--paper-deep);
+  color: var(--muted);
+}
+html[data-skin="quiet"] .blue-icon,
+html[data-skin="quiet"] .yellow-icon,
+html[data-skin="quiet"] .pink-icon,
+html[data-skin="quiet"] .green-icon,
+html[data-skin="quiet"] .library-section .blue-icon,
+html[data-skin="quiet"] .library-section .yellow-icon,
+html[data-skin="quiet"] .library-section .pink-icon,
+html[data-skin="quiet"] .library-section .green-icon {
+  background: var(--paper-deep);
+  color: var(--muted);
+}
+html[data-skin="quiet"] .game-play {
+  border: 0;
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: none;
+}
+html[data-skin="quiet"] .game-info {
+  border-bottom: 1px solid var(--line);
+}
+html[data-skin="quiet"] .library-list,
+html[data-skin="quiet"] .library-section .library-list {
+  border-top: 1px solid var(--line);
+}
+html[data-skin="quiet"] .library-row,
+html[data-skin="quiet"] .library-section .library-row {
+  border-bottom: 1px solid var(--line);
+}
+html[data-skin="quiet"] .library-row:hover {
+  background: transparent;
+  padding-left: 0;
+}
+html[data-skin="quiet"] .more-tool-card,
+html[data-skin="quiet"] .finance-directory-card {
+  background: var(--paper-deep);
+  border: 0;
+}
+html[data-skin="quiet"] .about-avatar,
+html[data-skin="quiet"] .about-author-mark {
+  background: var(--ink);
+  color: var(--paper);
+  border: 0;
+}
+html[data-skin="quiet"] .idea-status {
+  border: 0;
+  background: var(--paper-deep);
+  color: var(--muted);
+}
+html[data-skin="quiet"] .writing-feature {
+  border-top: 1px solid var(--line);
+}
+html[data-skin="quiet"] .article-row,
+html[data-skin="quiet"] .article-row:last-child {
+  border-color: var(--line);
+}
+html[data-skin="quiet"] .closing {
+  border-top: 1px solid var(--line);
+}
