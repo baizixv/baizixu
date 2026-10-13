@@ -3,6 +3,7 @@ title: Influence
 description: A classic work of social psychology explaining why we say yes. Starting from six common principles — reciprocity, commitment and consistency, social proof, liking, authority and scarcity — Cialdini takes apart the persuasion mechanics in advertising, sales, relationships and everyday decisions, and reminds us to notice the psychological triggers we tend to overlook.
 label: Reading notes
 status: Watching
+creator: Robert Cialdini
 ---
 
 ## Reading notes

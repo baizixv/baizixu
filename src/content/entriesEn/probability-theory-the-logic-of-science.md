@@ -3,6 +3,7 @@ title: "Probability Theory: The Logic of Science"
 description: E. T. Jaynes starts from the idea that probability is extended logic and places probability theory and statistical inference inside a single reasoning framework, asking how sound judgements can be formed from incomplete information. The book lays out the logical foundations of Bayesian methods and applies them to physics, mathematics, economics, chemistry and biology — a work on probabilistic reasoning for advanced undergraduates, graduate students and researchers.
 label: YouTube course
 status: Planned
+creator: E. T. Jaynes
 ---
 
 ## About the book

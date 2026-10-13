@@ -51,6 +51,7 @@ const entriesEn = defineCollection({
     label: z.string().optional(),
     tag: z.string().optional(),
     status: z.string().optional(),
+    creator: z.string().optional(),
     versionLabel: z.string().optional(),
   }),
 });

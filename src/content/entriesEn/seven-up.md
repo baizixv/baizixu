@@ -3,6 +3,7 @@ title: 7 Up
 description: Starting in 1964, British documentary director Michael Apted followed children from different social classes, revisiting them every seven years to record the choices, difficulties and life paths that carried them from childhood into adulthood.
 label: Documentary on Bilibili
 status: Watched
+creator: Michael Apted
 ---
 
 ## Viewing notes

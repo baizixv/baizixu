@@ -12,15 +12,16 @@ type SearchEntry = {
   body: string;
 };
 
-const KIND_LABEL: Record<string, string> = {
-  article: "文章",
-  idea: "想法",
-  project: "项目",
-  tool: "工具",
-  game: "游戏",
-  bookmark: "外链",
-  media: "媒体",
-};
+const isEn = typeof document !== "undefined" && document.documentElement.lang === "en";
+
+const KIND_LABEL: Record<string, string> = isEn
+  ? { article: "Essays", idea: "Ideas", project: "Projects", tool: "Tools", game: "Games", bookmark: "Links", media: "Library" }
+  : { article: "文章", idea: "想法", project: "项目", tool: "工具", game: "游戏", bookmark: "外链", media: "媒体" };
+
+const SEARCH_INDEX_URL = isEn ? "/en/search-index.json" : "/search-index.json";
+const AI_SOON_LABEL = isEn ? "AI search · coming soon" : "AI 搜索 · 即将上线";
+const EMPTY_LABEL = isEn ? "No results. Try another keyword." : "没有找到相关内容，换个关键词试试。";
+const FAIL_LABEL = isEn ? "Search index failed to load. Refresh and try again." : "搜索索引加载失败，请刷新页面重试。";
 
 let searchIndex: SearchEntry[] | undefined;
 let searchTimer: number | undefined;
@@ -29,7 +30,7 @@ let activeIndex = -1;
 
 const loadSearchIndex = async (): Promise<SearchEntry[]> => {
   if (searchIndex) return searchIndex;
-  const res = await fetch("/search-index.json", { cache: "no-store" });
+  const res = await fetch(SEARCH_INDEX_URL, { cache: "no-store" });
   if (!res.ok) throw new Error("search index unavailable");
   const data = (await res.json()) as SearchEntry[];
   searchIndex = data;
@@ -85,7 +86,7 @@ const renderPanel = (query: string, results: SearchEntry[]) => {
   const aiGlyph = document.createElement("span");
   aiGlyph.textContent = "✦";
   const aiLabel = document.createElement("span");
-  aiLabel.textContent = "AI 搜索 · 即将上线";
+  aiLabel.textContent = AI_SOON_LABEL;
   aiSoon.append(aiGlyph, aiLabel);
 
   const list = document.createElement("div");
@@ -93,7 +94,7 @@ const renderPanel = (query: string, results: SearchEntry[]) => {
   if (results.length === 0) {
     const empty = document.createElement("div");
     empty.className = "search-empty";
-    empty.textContent = "没有找到相关内容，换个关键词试试。";
+    empty.textContent = EMPTY_LABEL;
     list.append(empty);
   } else {
     results.forEach((entry) => {
@@ -145,7 +146,7 @@ export const setupSearch = (): (() => void) => {
         const panel = searchPanel();
         if (panel) {
           panel.hidden = false;
-          panel.textContent = "搜索索引加载失败，请刷新页面重试。";
+          panel.textContent = FAIL_LABEL;
         }
       }
     }, 120);

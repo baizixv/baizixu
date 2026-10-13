@@ -12,6 +12,7 @@ export interface LocalizedEntry {
   label?: string;
   tag?: string;
   status?: string;
+  creator?: string;
   /** 英文译文条目（存在时用于渲染正文）。 */
   translation?: EntryEn;
 }
@@ -33,6 +34,7 @@ export const localizeEntry = async (entry: Entry, lang: Lang): Promise<Localized
         label: translation.data.label,
         tag: translation.data.tag,
         status: translation.data.status,
+        creator: translation.data.creator,
         translation,
       };
     }
