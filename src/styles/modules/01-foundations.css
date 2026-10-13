@@ -140,9 +140,6 @@ input {
   min-width: 280px;
   justify-content: flex-end;
 }
-.lang-menu {
-  position: relative;
-}
 .search-box {
   height: 36px;
   width: 210px;
@@ -188,6 +185,22 @@ kbd {
 }
 .icon-button svg {
   width: 17px;
+}
+/* 语言切换：复用 icon-button 的皮肤样式，仅拉宽以容纳文字。 */
+.icon-button-wide {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: auto;
+  padding: 0 11px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.icon-button-wide svg {
+  width: 15px;
+  height: 15px;
 }
 .icon-button[hidden] {
   display: none;

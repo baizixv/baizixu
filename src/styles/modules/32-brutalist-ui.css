@@ -242,14 +242,6 @@
   color: var(--muted);
   font-size: 10px;
 }
-.lang-option {
-  justify-content: space-between;
-}
-.lang-check {
-  width: 15px;
-  height: 15px;
-  color: var(--blue);
-}
 
 @media (max-width: 900px) {
   :root {
