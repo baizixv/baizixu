@@ -70,6 +70,21 @@ const setupSite = () => {
   skinPanel?.addEventListener("click", onSkinSelect);
   document.addEventListener("click", onSkinOutside);
 
+  // 语言切换菜单（地球图标 + 下拉）
+  const langMenu = document.querySelector<HTMLDivElement>("#lang-menu");
+  const langButton = document.querySelector<HTMLButtonElement>("#lang-button");
+  const langPanel = document.querySelector<HTMLDivElement>("#lang-panel");
+  const setLangPanelOpen = (open: boolean) => {
+    langPanel?.toggleAttribute("hidden", !open);
+    langButton?.setAttribute("aria-expanded", String(open));
+  };
+  const onLangToggle = () => setLangPanelOpen(langPanel?.hasAttribute("hidden") ?? false);
+  const onLangOutside = (event: MouseEvent) => {
+    if (langMenu && !langMenu.contains(event.target as Node)) setLangPanelOpen(false);
+  };
+  langButton?.addEventListener("click", onLangToggle);
+  document.addEventListener("click", onLangOutside);
+
   const cleanupSearch = setupSearch();
 
   // 桌面端：点“联系我”/邮箱按钮弹出联系方式弹窗；移动端保持 mailto。
@@ -131,6 +146,7 @@ const setupSite = () => {
     if (event.key !== "Escape") return;
     closeContactModal();
     setSkinPanelOpen(false);
+    setLangPanelOpen(false);
   };
   contactModal?.addEventListener("click", onModalClick);
   contactModal?.addEventListener("click", onCopyClick);
@@ -166,6 +182,8 @@ const setupSite = () => {
     skinButton?.removeEventListener("click", onSkinToggle);
     skinPanel?.removeEventListener("click", onSkinSelect);
     document.removeEventListener("click", onSkinOutside);
+    langButton?.removeEventListener("click", onLangToggle);
+    document.removeEventListener("click", onLangOutside);
     cleanupSearch();
     contactModal?.removeEventListener("click", onModalClick);
     contactModal?.removeEventListener("click", onCopyClick);

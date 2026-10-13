@@ -1,5 +1,5 @@
 ---
-import { Download, Globe, Moon, Palette, Search, Sun } from 'lucide-astro';
+import { Check, Download, Globe, Moon, Palette, Search, Sun } from 'lucide-astro';
 import ContactModal from '@/components/shared/ContactModal.astro';
 import { themes, defaultTheme } from '@/data/themes';
 import { defaultLang, languages, type Lang } from '@/i18n/ui';
@@ -34,8 +34,6 @@ const langLinks = (Object.keys(languages) as Lang[]).map((lng) => ({
   label: languages[lng],
   href: switchLangPath(Astro.url.pathname, lng),
 }));
-/** 当前页面的“另一种语言”，用于一键切换按钮。 */
-const otherLang = langLinks.find((item) => item.lng !== locale) ?? langLinks[0];
 ---
 <!doctype html>
 <html lang={locale} data-skin={defaultTheme}>
@@ -110,10 +108,20 @@ const otherLang = langLinks.find((item) => item.lng !== locale) ?? langLinks[0];
               ))}
             </div>
           </div>
-          <a class="icon-button icon-button-wide" href={otherLang.href} hreflang={otherLang.lng} aria-label={t('lang.switch')} title={t('lang.switch')}>
-            <Globe aria-hidden="true" />
-            <span>{otherLang.label}</span>
-          </a>
+          <div class="lang-menu" id="lang-menu">
+            <button class="icon-button" id="lang-button" type="button" aria-label={t('lang.switch')} title={t('lang.switch')} aria-haspopup="true" aria-expanded="false">
+              <Globe aria-hidden="true" />
+            </button>
+            <div class="skin-panel lang-panel" id="lang-panel" hidden>
+              <p class="skin-panel-title">{t('lang.switch')}</p>
+              {langLinks.map(({ lng, label, href }) => (
+                <a class="skin-option lang-option" href={href} hreflang={lng} aria-current={lng === locale ? 'true' : undefined}>
+                  <span class="skin-option-copy"><strong>{label}</strong><small>{lng.toUpperCase()}</small></span>
+                  {lng === locale && <Check class="lang-check" aria-hidden="true" />}
+                </a>
+              ))}
+            </div>
+          </div>
           <button class="icon-button" id="theme-toggle" type="button" aria-label={t('theme.toggle.dark')} title={t('theme.toggle.dark')}>
             <Sun class="theme-sun" aria-hidden="true" />
             <Moon class="theme-moon" aria-hidden="true" />
