@@ -7,11 +7,11 @@ html[data-skin="quiet"] {
 }
 html[data-skin="quiet"] body {
   --paper: #f6f5f2;
-  --paper-deep: #eeebe5;
+  --paper-deep: #efede7;
   --white: #ffffff;
   --ink: #1b1b19;
   --muted: #75736d;
-  --line: #e3e0d9;
+  --line: #dcd7cc;
   --dark: #1b1b19;
   --blue: #5b6b8c;
   --yellow: #8c8880;
@@ -30,7 +30,7 @@ html[data-skin="quiet"] body.dark {
   --white: #1a1a18;
   --ink: #eceae4;
   --muted: #9b9891;
-  --line: #2c2b28;
+  --line: #34322d;
   --dark: #0f0f0e;
   --blue: #93a5c6;
   --yellow: #a09c93;
@@ -62,8 +62,8 @@ html[data-skin="quiet"] .games-section .games-heading .eyebrow,
 html[data-skin="quiet"] .media-library-section .eyebrow,
 html[data-skin="quiet"] .tools-section .eyebrow,
 html[data-skin="quiet"] .ideas-section .eyebrow {
-  color: var(--muted);
-  letter-spacing: 0.08em;
+  color: var(--blue);
+  letter-spacing: 0.1em;
 }
 
 /* Shell ------------------------------------------------------------------ */
@@ -91,9 +91,11 @@ html[data-skin="quiet"] .main-nav a.active {
   text-transform: none;
   letter-spacing: 0;
 }
-html[data-skin="quiet"] .main-nav a:hover,
-html[data-skin="quiet"] .main-nav a.active {
+html[data-skin="quiet"] .main-nav a:hover {
   color: var(--ink);
+}
+html[data-skin="quiet"] .main-nav a.active {
+  color: var(--blue);
 }
 html[data-skin="quiet"] .icon-button {
   border: 0;
@@ -159,11 +161,20 @@ html[data-skin="quiet"] .external-project-link:hover {
   opacity: 0.85;
 }
 html[data-skin="quiet"] .text-link,
-html[data-skin="quiet"] .view-all,
 html[data-skin="quiet"] .next-link {
   border-bottom: 0;
   padding-bottom: 0;
   color: var(--muted);
+  font-family: "Manrope", "Noto Sans SC", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+html[data-skin="quiet"] .view-all {
+  border-bottom: 0;
+  padding-bottom: 0;
+  color: var(--blue);
   font-family: "Manrope", "Noto Sans SC", sans-serif;
   font-size: 12px;
   font-weight: 600;

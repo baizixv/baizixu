@@ -7,9 +7,13 @@ html[data-skin="quiet"] .footer {
 html[data-skin="quiet"] .search-panel,
 html[data-skin="quiet"] .contact-modal-card,
 html[data-skin="quiet"] .skin-panel {
-  border: 0;
+  border: 1px solid var(--line);
   background: var(--white);
-  box-shadow: 0 24px 60px rgb(0 0 0 / 0.1);
+  box-shadow: 0 24px 60px rgb(0 0 0 / 0.12);
+}
+html[data-skin="quiet"] .pwa-toast {
+  border: 0;
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.18);
 }
 html[data-skin="quiet"] .search-ai-row {
   background: transparent;
@@ -49,7 +53,7 @@ html[data-skin="quiet"] .detail-lede {
   border-bottom: 1px solid var(--line);
 }
 html[data-skin="quiet"] .detail-cover {
-  border: 0;
+  border: 1px solid var(--line);
   box-shadow: none;
 }
 html[data-skin="quiet"] .detail-body h2 {
@@ -86,7 +90,7 @@ html[data-skin="quiet"] .idea-archive-list {
   border-top: 1px solid var(--line);
 }
 html[data-skin="quiet"] .archive-project-visual {
-  border: 0;
+  border: 1px solid var(--line);
 }
 
 /* Library page ----------------------------------------------------------- */
@@ -125,9 +129,9 @@ html[data-skin="quiet"] .media-status-next {
   color: var(--muted);
 }
 html[data-skin="quiet"] .library-status-group {
-  border: 0;
+  border: 1px solid var(--line);
   box-shadow: none;
-  background: transparent;
+  background: var(--white);
 }
 html[data-skin="quiet"] .library-status-heading {
   border-bottom: 1px solid var(--line);

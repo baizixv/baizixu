@@ -10,7 +10,7 @@ html[data-skin="quiet"] .stats {
 }
 html[data-skin="quiet"] .now-panel {
   background: var(--paper-deep);
-  border: 0;
+  border: 1px solid var(--line);
   box-shadow: none;
   color: var(--ink);
 }
@@ -50,7 +50,7 @@ html[data-skin="quiet"] .progress span {
 
 /* Ticker：去掉色带，只留一行淡字 */
 html[data-skin="quiet"] .ticker-band {
-  background: transparent;
+  background: var(--paper-deep);
   color: var(--muted);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -72,7 +72,7 @@ html[data-skin="quiet"] .tools-section,
 html[data-skin="quiet"] .library-section,
 html[data-skin="quiet"] .ideas-section,
 html[data-skin="quiet"] .about-preview {
-  border-top: 0;
+  border-top: 1px solid var(--line);
   background: var(--paper);
 }
 html[data-skin="quiet"] .projects-section {
@@ -105,7 +105,7 @@ html[data-skin="quiet"] .projects-section .project-info {
   border-bottom: 1px solid var(--line);
 }
 html[data-skin="quiet"] .projects-section .project-visual {
-  border: 0;
+  border: 1px solid var(--line);
 }
 html[data-skin="quiet"] .projects-section .visual-ogden {
   background: var(--paper-deep);
@@ -124,7 +124,7 @@ html[data-skin="quiet"] .ideas-empty,
 html[data-skin="quiet"] .tiny-tool-card,
 html[data-skin="quiet"] .standalone-tool-card,
 html[data-skin="quiet"] .about-preview-card {
-  border: 0;
+  border: 1px solid var(--line);
   box-shadow: none;
 }
 html[data-skin="quiet"] .media-library-section .media-card,
@@ -144,7 +144,7 @@ html[data-skin="quiet"] .ideas-empty {
 }
 html[data-skin="quiet"] .games-section .project-visual,
 html[data-skin="quiet"] .game-card .project-visual {
-  border: 0;
+  border: 1px solid var(--line);
   background: var(--white);
 }
 html[data-skin="quiet"] .project-card:hover .project-visual,
@@ -155,12 +155,7 @@ html[data-skin="quiet"] .tiny-tool-card:hover,
 html[data-skin="quiet"] .idea-card:hover {
   transform: none;
   box-shadow: none;
-  border: 0;
-}
-html[data-skin="quiet"] .media-card:hover,
-html[data-skin="quiet"] .tiny-tool-card:hover,
-html[data-skin="quiet"] .idea-card:hover {
-  background: var(--accent-soft);
+  border-color: var(--muted);
 }
 
 /* 图标底座统一成无彩色 */
@@ -206,7 +201,7 @@ html[data-skin="quiet"] .library-section .library-row {
   border-bottom: 1px solid var(--line);
 }
 html[data-skin="quiet"] .library-row:hover {
-  background: transparent;
+  background: var(--paper-deep);
   padding-left: 0;
 }
 html[data-skin="quiet"] .more-tool-card,
