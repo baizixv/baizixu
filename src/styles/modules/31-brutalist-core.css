@@ -86,7 +86,7 @@ h1 em,
 /* Shell ------------------------------------------------------------------ */
 .topbar {
   border-bottom: 2px solid var(--ink);
-  background: var(--paper);
+  background: transparent;
 }
 .brand-mark {
   width: 34px;
@@ -115,14 +115,15 @@ h1 em,
   border-color: var(--ink);
 }
 .icon-button {
-  border: 2px solid var(--ink);
-  background: var(--white);
+  border: 0;
+  background: transparent;
   color: var(--ink);
-  transition: box-shadow 0.15s, transform 0.15s;
+  transition: background 0.15s, color 0.15s;
 }
 .icon-button:hover {
-  box-shadow: var(--shadow-sm);
-  transform: translate(-1px, -1px);
+  background: var(--paper-deep);
+  box-shadow: none;
+  transform: none;
 }
 .search-wrap {
   margin: 0;
