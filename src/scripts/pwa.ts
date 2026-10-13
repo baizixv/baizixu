@@ -41,13 +41,19 @@ const setupPwa = () => {
   cleanupInstall?.();
 
   const themeColor = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
-  const isDarkTheme = () =>
-    document.documentElement.dataset.theme === "dark" || document.body.classList.contains("dark");
   const updateThemeColor = () => {
-    if (themeColor) themeColor.content = isDarkTheme() ? "#131313" : "#f1ece0";
+    if (!themeColor) return;
+    const skin = document.documentElement.dataset.skin;
+    const dark =
+      document.documentElement.dataset.theme === "dark" || document.body.classList.contains("dark");
+    themeColor.content = skin === "terminal" ? "#05070a" : dark ? "#131313" : "#f1ece0";
   };
   updateThemeColor();
   themeObserver = new MutationObserver(updateThemeColor);
+  themeObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme", "data-skin"],
+  });
   themeObserver.observe(document.body, { attributes: true, attributeFilter: ["class"] });
 
   const installButton = document.querySelector<HTMLButtonElement>("#install-button");

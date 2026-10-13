@@ -1,6 +1,7 @@
 ---
-import { Download, Moon, Search, Sun } from 'lucide-astro';
+import { Download, Moon, Palette, Search, Sun } from 'lucide-astro';
 import ContactModal from '@/components/shared/ContactModal.astro';
+import { themes, defaultTheme } from '@/data/themes';
 import '../styles/global.css';
 
 interface Props {
@@ -11,16 +12,19 @@ interface Props {
 const { title = '白子诩 · 实验场', description = '白子诩的个人实验场：文章、工具、项目、游戏与收藏。' } = Astro.props;
 ---
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-skin={defaultTheme}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script is:inline>
       (() => {
         try {
-          if (JSON.parse(localStorage.getItem('bai-theme') || 'null') === 'dark') document.documentElement.dataset.theme = 'dark';
+          const skin = JSON.parse(localStorage.getItem('bai-skin') || 'null');
+          const theme = JSON.parse(localStorage.getItem('bai-theme') || 'null');
+          if (skin) document.documentElement.dataset.skin = skin;
+          if (theme === 'dark' || skin === 'terminal') document.documentElement.dataset.theme = 'dark';
         } catch {
-          // Ignore storage restrictions and keep the default light theme.
+          // Ignore storage restrictions and keep the default theme.
         }
       })();
     </script>
@@ -68,6 +72,20 @@ const { title = '白子诩 · 实验场', description = '白子诩的个人实�
               <kbd>/</kbd>
             </label>
             <div class="search-panel" id="search-panel" hidden></div>
+          </div>
+          <div class="skin-menu" id="skin-menu">
+            <button class="icon-button" id="skin-button" type="button" aria-label="切换主题风格" title="切换主题风格" aria-haspopup="true" aria-expanded="false">
+              <Palette aria-hidden="true" />
+            </button>
+            <div class="skin-panel" id="skin-panel" hidden>
+              <p class="skin-panel-title">主题风格</p>
+              {themes.map((option) => (
+                <button class="skin-option" type="button" data-skin-option={option.id}>
+                  <span class="skin-swatch" data-swatch={option.id} aria-hidden="true"></span>
+                  <span class="skin-option-copy"><strong>{option.name}</strong><small>{option.description}</small></span>
+                </button>
+              ))}
+            </div>
           </div>
           <button class="icon-button" id="theme-toggle" type="button" aria-label="切换深色模式" title="切换深色模式">
             <Sun class="theme-sun" aria-hidden="true" />

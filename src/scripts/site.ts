@@ -1,4 +1,5 @@
 import { readStorage, writeStorage } from "../lib/storage";
+import { defaultTheme, themeStorageKey, themes } from "../data/themes";
 import { setupSearch } from "./search";
 
 let cleanup: (() => void) | undefined;
@@ -18,12 +19,54 @@ const setupSite = () => {
     body.classList.toggle("dark");
     document.documentElement.dataset.theme = body.classList.contains("dark") ? "dark" : "light";
     writeStorage("bai-theme", body.classList.contains("dark") ? "dark" : "light");
+    syncThemeLabel();
+  };
+  const syncThemeLabel = () => {
     themeToggle?.setAttribute(
       "aria-label",
       body.classList.contains("dark") ? "切换浅色模式" : "切换深色模式",
     );
   };
+  syncThemeLabel();
   themeToggle?.addEventListener("click", onThemeToggle);
+
+  // 主题皮肤切换（配置见 src/data/themes.ts）。
+  const skinMenu = document.querySelector<HTMLDivElement>("#skin-menu");
+  const skinButton = document.querySelector<HTMLButtonElement>("#skin-button");
+  const skinPanel = document.querySelector<HTMLDivElement>("#skin-panel");
+  const skinOptions = [...document.querySelectorAll<HTMLButtonElement>("[data-skin-option]")];
+  const setSkinPanelOpen = (open: boolean) => {
+    skinPanel?.toggleAttribute("hidden", !open);
+    skinButton?.setAttribute("aria-expanded", String(open));
+  };
+  const applySkin = (id: string, persist = true) => {
+    const known = themes.some((theme) => theme.id === id) ? id : defaultTheme;
+    const option = themes.find((theme) => theme.id === known);
+    document.documentElement.dataset.skin = known;
+    if (persist) writeStorage(themeStorageKey, known);
+    if (option?.preferDark) {
+      body.classList.add("dark");
+      document.documentElement.dataset.theme = "dark";
+      if (persist) writeStorage("bai-theme", "dark");
+      syncThemeLabel();
+    }
+    skinOptions.forEach((item) => item.classList.toggle("active", item.dataset.skinOption === known));
+    skinButton?.setAttribute("aria-label", `切换主题风格（当前：${option?.name ?? known}）`);
+  };
+  applySkin(readStorage<string>(themeStorageKey, defaultTheme), false);
+  const onSkinToggle = () => setSkinPanelOpen(skinPanel?.hasAttribute("hidden") ?? false);
+  const onSkinSelect = (event: MouseEvent) => {
+    const target = (event.target as HTMLElement).closest<HTMLButtonElement>("[data-skin-option]");
+    if (!target?.dataset.skinOption) return;
+    applySkin(target.dataset.skinOption);
+    setSkinPanelOpen(false);
+  };
+  const onSkinOutside = (event: MouseEvent) => {
+    if (skinMenu && !skinMenu.contains(event.target as Node)) setSkinPanelOpen(false);
+  };
+  skinButton?.addEventListener("click", onSkinToggle);
+  skinPanel?.addEventListener("click", onSkinSelect);
+  document.addEventListener("click", onSkinOutside);
 
   const cleanupSearch = setupSearch();
 
@@ -83,7 +126,9 @@ const setupSite = () => {
     }
   };
   const onModalKeyDown = (event: KeyboardEvent) => {
-    if (event.key === "Escape") closeContactModal();
+    if (event.key !== "Escape") return;
+    closeContactModal();
+    setSkinPanelOpen(false);
   };
   contactModal?.addEventListener("click", onModalClick);
   contactModal?.addEventListener("click", onCopyClick);
@@ -116,6 +161,9 @@ const setupSite = () => {
 
   cleanup = () => {
     themeToggle?.removeEventListener("click", onThemeToggle);
+    skinButton?.removeEventListener("click", onSkinToggle);
+    skinPanel?.removeEventListener("click", onSkinSelect);
+    document.removeEventListener("click", onSkinOutside);
     cleanupSearch();
     contactModal?.removeEventListener("click", onModalClick);
     contactModal?.removeEventListener("click", onCopyClick);

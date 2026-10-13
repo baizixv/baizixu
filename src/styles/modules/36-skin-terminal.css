@@ -1,0 +1,298 @@
+/* 36 Skin: terminal
+ * 终端极客皮肤。作为增量覆盖层运行在 31-35 之上：只重定义 Token
+ * 并补少量组件规则，不改变网格与布局。必须最后导入。
+ */
+html[data-skin="terminal"] {
+  background: #05070a;
+  color-scheme: dark;
+}
+html[data-skin="terminal"] body {
+  --paper: #05070a;
+  --paper-deep: #0a100c;
+  --white: #070d09;
+  --ink: #a9f4bf;
+  --muted: #5f9f74;
+  --line: #1f7a3a;
+  --dark: #03060a;
+  --blue: #3ad6ff;
+  --yellow: #ffcb3d;
+  --pink: #ff5f8f;
+  --green: #38ff85;
+  --accent-soft: rgba(56, 255, 133, 0.09);
+  --shadow-sm: 0 0 0 1px rgba(56, 255, 133, 0.36), 0 0 12px rgba(56, 255, 133, 0.08);
+  --shadow: 0 0 0 1px rgba(56, 255, 133, 0.72), 0 0 22px rgba(56, 255, 133, 0.18);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "DM Mono", "Noto Sans SC", monospace;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(56, 255, 133, 0.035) 0 1px,
+    transparent 1px 3px
+  );
+  background-attachment: fixed;
+}
+/* 终端皮肤固定深色，隐藏明暗切换按钮。 */
+html[data-skin="terminal"] #theme-toggle {
+  display: none;
+}
+
+/* Type ------------------------------------------------------------------- */
+html[data-skin="terminal"] h1, html[data-skin="terminal"] h2,
+html[data-skin="terminal"] h3, html[data-skin="terminal"] h4,
+html[data-skin="terminal"] .detail-body, html[data-skin="terminal"] .hero-lede,
+html[data-skin="terminal"] .button, html[data-skin="terminal"] .mail-button,
+html[data-skin="terminal"] .text-link, html[data-skin="terminal"] .view-all,
+html[data-skin="terminal"] .main-nav a {
+  font-family: "DM Mono", "Noto Sans SC", monospace;
+}
+html[data-skin="terminal"] h1,
+html[data-skin="terminal"] h2 {
+  text-shadow: 0 0 18px rgba(56, 255, 133, 0.22);
+}
+html[data-skin="terminal"] .hero h1::after {
+  content: "_";
+  color: var(--green);
+  animation: terminal-blink 1.05s steps(1) infinite;
+}
+html[data-skin="terminal"] .brand-copy strong::before {
+  content: "> ";
+  color: var(--green);
+}
+@keyframes terminal-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Shell ------------------------------------------------------------------ */
+html[data-skin="terminal"] .topbar {
+  border-bottom-color: var(--green);
+  box-shadow: 0 1px 0 rgba(56, 255, 133, 0.3), 0 8px 26px rgba(56, 255, 133, 0.07);
+}
+html[data-skin="terminal"] .brand-mark {
+  background: var(--paper-deep);
+  border-color: var(--green);
+}
+html[data-skin="terminal"] .main-nav a:hover,
+html[data-skin="terminal"] .main-nav a.active {
+  background: var(--green);
+  color: #04120a;
+}
+html[data-skin="terminal"] .icon-button {
+  background: var(--white);
+  border-color: var(--green);
+  color: var(--green);
+}
+html[data-skin="terminal"] .search-box {
+  background: var(--white);
+  border-color: var(--green);
+}
+html[data-skin="terminal"] .search-box:focus-within {
+  box-shadow: 0 0 0 1px var(--green), 0 0 18px rgba(56, 255, 133, 0.2);
+}
+html[data-skin="terminal"] kbd {
+  background: var(--paper-deep);
+  border-color: var(--green);
+  color: var(--green);
+}
+
+/* Buttons, tags, links --------------------------------------------------- */
+html[data-skin="terminal"] .button-dark {
+  background: var(--green);
+  color: #04120a;
+}
+html[data-skin="terminal"] .mail-button,
+html[data-skin="terminal"] .game-launch {
+  background: var(--paper-deep);
+  color: var(--green);
+  border-color: var(--green);
+}
+html[data-skin="terminal"] .tag-blue {
+  background: var(--blue);
+  color: #04121a;
+}
+html[data-skin="terminal"] .tag-yellow {
+  background: var(--yellow);
+  color: #1a1200;
+}
+html[data-skin="terminal"] .tag-pink {
+  background: var(--pink);
+  color: #1a0410;
+}
+html[data-skin="terminal"] .tag-green {
+  background: var(--green);
+  color: #04120a;
+}
+
+/* Section accents and surfaces ------------------------------------------ */
+html[data-skin="terminal"] .projects-section::before,
+html[data-skin="terminal"] .games-section::before,
+html[data-skin="terminal"] .media-library-section::before,
+html[data-skin="terminal"] .tools-section::before,
+html[data-skin="terminal"] .ideas-section::before {
+  border-color: var(--line);
+  box-shadow: 0 0 16px var(--section-accent, var(--green));
+}html[data-skin="terminal"] .projects-section {
+  border-top-color: var(--line);
+}
+html[data-skin="terminal"] .projects-section .project-info,
+html[data-skin="terminal"] .projects-section .project-info h3,
+html[data-skin="terminal"] .projects-section .project-info p,
+html[data-skin="terminal"] .projects-section .project-info > svg,
+html[data-skin="terminal"] .projects-section .project-type,
+html[data-skin="terminal"] .projects-section .extension-tabs { color: var(--ink); }
+html[data-skin="terminal"] .projects-section .project-info {
+  border-bottom-color: var(--line);
+}
+html[data-skin="terminal"] .projects-section .visual-ogden {
+  background: var(--paper-deep);
+  color: var(--green);
+}
+html[data-skin="terminal"] .ticker-band {
+  background: #03060a;
+  color: var(--green);
+  border-color: var(--line);
+}
+html[data-skin="terminal"] .ticker-track b {
+  color: var(--pink);
+}
+html[data-skin="terminal"] .now-panel {
+  background: var(--white);
+  border-color: var(--green);
+  box-shadow: 0 0 0 1px var(--green), 0 0 28px rgba(56, 255, 133, 0.15);
+}
+html[data-skin="terminal"] .image-tag {
+  background: var(--paper-deep);
+  color: var(--green);
+  border-color: var(--green);
+}
+html[data-skin="terminal"] .progress span {
+  background: var(--green);
+}
+
+/* Terminal-tinted imagery ------------------------------------------------ */
+html[data-skin="terminal"] .now-image-wrap img,
+html[data-skin="terminal"] .project-visual > img {
+  filter: grayscale(1) sepia(1) hue-rotate(65deg) saturate(2.4) brightness(0.92) contrast(1.08);
+}
+
+/* Cards and list rows ---------------------------------------------------- */
+html[data-skin="terminal"] .library-list {
+  border-top-color: var(--green);
+}
+/* 亮色图标底统一配深色图标，避免荧光绿叠色看不清 */
+html[data-skin="terminal"] .library-icon,
+html[data-skin="terminal"] .media-card-mark,
+html[data-skin="terminal"] .tiny-tool-icon,
+html[data-skin="terminal"] .idea-status,
+html[data-skin="terminal"] .ideas-empty-icon,
+html[data-skin="terminal"] .idea-detail-icon {
+  color: #04120a;
+}
+html[data-skin="terminal"] .library-section .blue-icon { background: var(--blue); }
+html[data-skin="terminal"] .library-section .yellow-icon { background: var(--yellow); }
+html[data-skin="terminal"] .library-section .pink-icon { background: var(--pink); }
+html[data-skin="terminal"] .library-section .green-icon { background: var(--green); }
+html[data-skin="terminal"] .games-symbol,
+html[data-skin="terminal"] .tools-symbol {
+  background: var(--paper-deep);
+  color: var(--green);
+  border-color: var(--green);
+}
+html[data-skin="terminal"] .library-row:hover,
+html[data-skin="terminal"] .standalone-tool-card:hover {
+  background: var(--accent-soft);
+}
+html[data-skin="terminal"] .media-card-mark,
+html[data-skin="terminal"] .ideas-empty-icon,
+html[data-skin="terminal"] .idea-status,
+html[data-skin="terminal"] .tiny-tool-icon,
+html[data-skin="terminal"] .standalone-tool-icon {
+  border-color: var(--line);
+}
+html[data-skin="terminal"] .more-tool-card,
+html[data-skin="terminal"] .finance-directory-card {
+  background: var(--paper-deep);
+}
+html[data-skin="terminal"] .tool-panel {
+  background: #03060a;
+  border-color: var(--green);
+}
+html[data-skin="terminal"] .tool-tab.active {
+  background: var(--accent-soft);
+  border-color: var(--green);
+  border-left-color: var(--green);
+  color: var(--green);
+}
+html[data-skin="terminal"] .tool-tab:hover {
+  background: var(--accent-soft);
+}
+
+/* Overlays --------------------------------------------------------------- */
+html[data-skin="terminal"] .search-panel,
+html[data-skin="terminal"] .contact-modal-card,
+html[data-skin="terminal"] .skin-panel {
+  background: var(--white);
+  border-color: var(--green);
+}
+html[data-skin="terminal"] .search-ai-row {
+  background: var(--paper-deep);
+  color: var(--green);
+  border-bottom-color: var(--line);
+}
+html[data-skin="terminal"] .search-ai-row span:first-child {
+  color: var(--green);
+}
+html[data-skin="terminal"] .search-ai-row.active,
+html[data-skin="terminal"] .search-result.active {
+  background: var(--green);
+  color: #04120a;
+}
+html[data-skin="terminal"] .search-ai-row.active span:first-child {
+  color: #04120a;
+}
+html[data-skin="terminal"] .skin-option:hover,
+html[data-skin="terminal"] .skin-option.active {
+  background: var(--accent-soft);
+  border-color: var(--green);
+}
+html[data-skin="terminal"] .skin-swatch {
+  border-color: var(--green);
+}
+
+/* Detail + about --------------------------------------------------------- */
+html[data-skin="terminal"] .detail-body pre {
+  background: #03060a;
+  border-color: var(--green);
+  color: var(--green);
+}
+html[data-skin="terminal"] .detail-body code {
+  background: var(--paper-deep);
+  border-color: var(--line);
+  color: var(--green);
+}
+html[data-skin="terminal"] .detail-body th {
+  background: var(--green);
+  color: #04120a;
+}
+html[data-skin="terminal"] .about-avatar,
+html[data-skin="terminal"] .about-author-mark {
+  background: var(--green);
+  color: #04120a;
+}
+html[data-skin="terminal"] .current-release,
+html[data-skin="terminal"] .media-status-done {
+  background: var(--green);
+  color: #04120a;
+}
+html[data-skin="terminal"] .contact-copy.copied {
+  background: var(--green);
+  border-color: var(--green);
+  color: #04120a;
+}
+
+@media (max-width: 900px) {
+  html[data-skin="terminal"] .now-panel {
+    box-shadow: 0 0 0 1px var(--green), 0 0 18px rgba(56, 255, 133, 0.14);
+  }
+}

@@ -166,6 +166,77 @@
   color: var(--ink);
 }
 
+/* Theme skin picker ------------------------------------------------------ */
+.skin-menu {
+  position: relative;
+}
+.skin-panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: min(260px, calc(100vw - 32px));
+  padding: 10px;
+  border: 2px solid var(--ink);
+  background: var(--white);
+  box-shadow: var(--shadow);
+  z-index: 65;
+}
+.skin-panel[hidden] {
+  display: none;
+}
+.skin-panel-title {
+  margin: 2px 6px 10px;
+  color: var(--muted);
+  font: 700 10px "DM Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+.skin-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border: 2px solid transparent;
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+.skin-option:hover,
+.skin-option.active {
+  border-color: var(--ink);
+  background: var(--accent-soft);
+}
+.skin-option.active {
+  box-shadow: var(--shadow-sm);
+}
+.skin-swatch {
+  flex: 0 0 26px;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--ink);
+}
+.skin-swatch[data-swatch="brutalist"] {
+  background: linear-gradient(135deg, #f1ece0 50%, #2b4bff 50%);
+}
+.skin-swatch[data-swatch="terminal"] {
+  background: linear-gradient(135deg, #05070a 50%, #38ff85 50%);
+}
+.skin-option-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.skin-option-copy strong {
+  font-size: 13px;
+}
+.skin-option-copy small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
 @media (max-width: 900px) {
   :root {
     --shadow-sm: 2px 2px 0 var(--ink);
