@@ -7,6 +7,7 @@ label: Chrome 扩展 · React / TypeScript
 visual: extension
 image: /assets/project-bookmark-extension.png
 url: https://github.com/baizixv/chrome-extension-bookmark
+storeUrl: https://chromewebstore.google.com/detail/%E4%B9%A6%E7%AD%BE%E5%BF%AB%E5%AD%98/pfglhkobpnihfocgdkkeeadilbmoemlp
 ---
 
 ## 项目简介

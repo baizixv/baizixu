@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
-import { ArrowLeft, ArrowUpRight, ExternalLink, Gamepad2 } from 'lucide-astro';
+import { ArrowLeft, ArrowUpRight, Chrome, ExternalLink, Gamepad2 } from 'lucide-astro';
 import Layout from '@/layouts/Layout.astro';
 import { useTranslations } from '@/i18n/utils';
 import { localizeEntry } from '@/lib/i18n-content';
@@ -26,6 +26,7 @@ const { Content } = await render(localized.translation ?? project);
       {project.data.image && <img class="detail-cover" src={project.data.image} alt={`${localized.title} cover`} width="900" height="600" />}
       <div class="detail-actions">
         {project.data.demoUrl && <a class="internal-demo-link" href={project.data.demoUrl}><Gamepad2 /><span>{t('projects.demo')}</span><ArrowUpRight /></a>}
+        {project.data.storeUrl?.startsWith('http') && <a class="external-project-link" href={project.data.storeUrl} target="_blank" rel="noreferrer"><Chrome /><span>{t('projects.install')}</span><ArrowUpRight /></a>}
         {project.data.url?.startsWith('http') && <a class="external-project-link" href={project.data.url} target="_blank" rel="noreferrer"><ExternalLink /><span>{t('projects.external')}</span><ArrowUpRight /></a>}
       </div>
       <div class="detail-body"><Content /></div>

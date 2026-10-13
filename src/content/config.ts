@@ -24,6 +24,7 @@ const entries = defineCollection({
     rating: z.number().min(0).max(5).optional(),
     label: z.string().optional(),
     url: z.string().optional(),
+    storeUrl: z.string().optional(),
     demoUrl: z.string().optional(),
     area: z.enum(["tiny", "standalone"]).optional(),
     image: z.string().optional(),
