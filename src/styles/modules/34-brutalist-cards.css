@@ -13,8 +13,22 @@
   transform: translate(-2px, -2px);
   transition: transform 0.15s, box-shadow 0.15s;
 }
-.projects-section .project-visual {
+.projects-section .project-card {
+  background: var(--white);
   border: 2px solid var(--ink);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.projects-section .project-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow);
+}
+.projects-section .project-card:hover .project-visual {
+  transform: none;
+  box-shadow: none;
+}
+.projects-section .project-visual {
+  border: 0;
+  box-shadow: none;
   height: auto;
   aspect-ratio: 9 / 5;
 }
@@ -29,16 +43,19 @@
   background: #e8d5b7;
   color: #2c2416;
 }
-.projects-section .project-info, .projects-section .project-info h3,
-.projects-section .project-info p, .projects-section .project-info > svg,
-.projects-section .project-type, .projects-section .extension-tabs {
-  color: #efece2;
-}
-.projects-section .project-info {
-  border-bottom: 2px solid #efece2;
+.projects-section .project-info,
+.projects-section .project-info h3,
+.projects-section .project-info > svg,
+.projects-section .project-type {
+  color: var(--ink);
 }
 .projects-section .project-info p {
-  color: #b9b6ac;
+  color: var(--muted);
+}
+.projects-section .project-info {
+  border-top: 2px solid var(--ink);
+  border-bottom: 0;
+  padding: 16px 18px 20px;
 }
 .games-section .project-visual {
   background: var(--paper-deep);
