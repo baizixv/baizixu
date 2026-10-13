@@ -1,5 +1,6 @@
 # 白子诩 · 个人实验场
 
+[中文](README.md) · [English](README.en.md)
 
 当前版本使用 Astro + TypeScript + Markdown Content Collections，适合长期维护文章、项目、工具和收藏内容。
 
@@ -23,30 +24,38 @@ npm run preview           # 预览构建产物
 
 ## 目录结构
 
-- `src/content/entries/`：文章、想法、项目、工具、游戏、收藏的 Markdown 内容。新增文件即可进入页面。
-- `src/pages/games/`：游戏项目列表、游戏详情页和自托管人类基准测试。
+- `src/content/entries/`：文章、想法、项目、工具、游戏、收藏的中文 Markdown 内容。新增文件即可进入页面。
+- `src/content/entriesEn/`：与中文条目同名的英文译文，缺失时自动回退中文。
+- `src/i18n/`：多语言词典（`ui.ts`）与路径/翻译助手（`utils.ts`）。
+- `src/pages/`：首页、文章/项目/游戏/想法列表、关于页和详情页路由；英文版本位于 `src/pages/en/`。
+- `src/components/sections/`：首页各内容区块。
+- `src/components/shared/`：跨页面复用的通用组件（Footer、联系我弹窗）。
+- `src/components/pages/`：中英路由共用的页面组件。
+- `src/scripts/`：全局交互脚本（site 主题/弹窗、search 站内搜索、pwa 安装）。
+- `src/scripts/pages/`：绑定具体页面的工具/游戏脚本。
+- `src/styles/global.css`：全局样式入口，只负责按顺序导入 CSS 模块。
+- `src/styles/modules/`：按基础层、首页区块、独立工具、游戏、响应式覆盖层、全局 UI 和主题皮肤拆分的 CSS 模块；文件名前缀数字即导入顺序（层叠顺序），每个文件不超过 300 行。
+- `src/data/themes.ts`：主题皮肤配置（id / 名称 / 描述），新增皮肤只需追加一项并补一个皮肤模块。
+- `src/lib/`：跨功能复用的浏览器工具，例如防御性 localStorage 读写。
+- `scripts/check-file-limits.mjs`：构建前执行的源文件行数检查。
+- `public/assets/`：本地 Logo、favicon、首页插画和项目封面。
+- `scripts/generate_assets.py`：使用 Pillow 重新生成整套网站图形资源。
 
+游戏与工具相关的文件：
+
+- `src/pages/games/`：游戏列表、游戏详情页和自托管人类基准测试。
 - `src/pages/tools/`：Tiny Tools 集合、在线工具目录和独立工具页面。
 - `src/scripts/pages/tiny-tools.ts`：Tiny Tools 的时间戳、Base64、MD5、颜色值和 JSON 工具逻辑。
 - `src/data/benchmark.ts`：人类基准测试的测试项配置。
 - `src/scripts/pages/benchmark.ts`：人类基准测试状态、页面控制和成绩逻辑。
 - `src/scripts/pages/benchmark/`：按记忆、速度和逻辑分组的人类基准测试实现。
-- `src/types/`：跨模块共享的 TypeScript 类型。
 - `src/data/about.ts`：作者介绍、开发进度和版本说明的集中数据。
 - `src/content/config.ts`：统一定义 frontmatter 字段和类型校验。
 
-- `src/components/sections/`：首页各内容区块。
-- `src/components/shared/`：跨页面复用的通用组件（Footer、联系我弹窗）。
-- `src/scripts/`：全局交互脚本（site 主题/弹窗、search 站内搜索、pwa 安装）。
-- `src/scripts/pages/`：绑定具体页面的工具/游戏脚本。
-- `src/pages/`：首页、文章列表、项目列表、游戏列表、关于页和详情页路由。
-- `src/styles/global.css`：全局样式入口，只负责按顺序导入 CSS 模块。
+## 多语言与主题
 
-- `src/styles/modules/`：按基础层、首页区块、独立工具、游戏、响应式覆盖层和全局 UI 拆分的 CSS 模块；文件名前缀数字即导入顺序（层叠顺序），每个文件不超过 300 行。
-- `src/lib/`：跨功能复用的浏览器工具，例如防御性 localStorage 读写。
-- `scripts/check-file-limits.mjs`：构建前执行的源文件行数检查。
-- `public/assets/`：本地 Logo、favicon、首页插画和项目封面。
-- `scripts/generate_assets.py`：使用 Pillow 重新生成整套网站图形资源。
+- **语言**：默认中文且不带前缀，英文在 `/en/` 下。UI 文案在 `src/i18n/ui.ts`，组件用 `useTranslations(locale)` 取词、用 `localizePath()` 拼路径。内容译文放在 `src/content/entriesEn/`，缺译文时自动回退中文。
+- **主题皮肤**：配置在 `src/data/themes.ts`，皮肤层是 `src/styles/modules/` 里编号 31 起、最后导入的模块（只覆盖颜色/边框/阴影/字体，不改布局）。顶栏调色板菜单可在线切换，`localStorage.bai-skin` 记忆选择。
 
 ## 图形资源
 
@@ -66,25 +75,16 @@ python3 scripts/generate_assets.py
 
 参考项目采用 GNU GPL v3。本站实现使用独立代码，不直接复制参考项目文件；如继续改编或分发参考项目代码，请遵守其许可证要求。
 
-
 ## 页面约定
 
 - 详情页中的外部链接必须放在页面开头区域：位于标题、简介和封面之后，正文内容之前，避免用户翻页寻找。
 - 同一详情页的操作按钮统一放在 `.detail-actions` 中，本站体验按钮排在前面，外部链接排在后面；按钮使用统一高度并保持顶部对齐。
-
 - 外部链接需要使用明显的视觉样式（颜色、下划线或外链图标），并在新标签页打开。
 - 首页项目展示区使用等宽网格，不为首个项目设置额外跨列或放大宽度；移动端按响应式规则降为单列。
-
 - 在线工具统一使用 `kind: tool`，通过 `area: tiny` 放入“更多工具”集合，或通过 `area: standalone` 使用独立工具入口；工具应优先提供本站 `demoUrl`，不再混入项目档案。
 - 参考 baizixv.com 的工具分类思路，但所有工具在本站独立实现；当前包括时间、编码、颜色、二维码和财务计算工具。默认采用浏览器本地处理，不上传或保存用户输入。
-
 - `kind: media` 用于图书馆条目，通过 `mediaType: book | screen | music | game` 区分书籍、影视剧、音乐和游戏，可补充作者/导演、年份、评分、书籍字数、`color` 区分视觉主题和外部链接；书名展示统一使用中文书名号。
-
-
-
-
 - Ogden 850 是独立实现的英语学习项目，数据放在 `public/data/ogden850.json`，学习进度和收藏只保存在浏览器 `localStorage`。
-
 
 ## 部署
 
