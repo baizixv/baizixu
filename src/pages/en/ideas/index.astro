@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import { ArrowLeft, ArrowUpRight, Lightbulb } from 'lucide-astro';
+import Layout from '@/layouts/Layout.astro';
+import { useTranslations } from '@/i18n/utils';
+import { localizeEntries } from '@/lib/i18n-content';
+
+const locale = 'en' as const;
+const t = useTranslations(locale);
+const ideas = (await getCollection('entries', ({ data }) => data.kind === 'idea')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const items = await localizeEntries(ideas, locale);
+const statusMap: Record<string, string> = { '想法萌芽': 'Seed', '推敲中': 'Drafting', '准备实现': 'Ready', '实现中': 'Building', '已实现': 'Done' };
+const formatDate = (date: Date) => date.toISOString().slice(0, 10);
+---
+<Layout title={t('ideas.title')} description={t('ideas.archiveDesc')}>
+  <main class="archive-page ideas-archive section-wrap">
+    <a class="back-link" href="/en/"><ArrowLeft /> {t('back.home')}</a>
+    <div class="archive-heading"><p class="eyebrow">{t('ideas.eyebrow')}</p><h1>{t('ideas.archive')}</h1><p>{t('ideas.archiveDesc')}</p></div>
+    {items.length > 0 ? <div class="idea-archive-list">
+      {items.map(({ entry, title, description, status }, index) => <a class={`idea-archive-row idea-tone-${entry.data.color ?? 'yellow'}`} href={`/en/ideas/${entry.id.replace(/\.md$/, '')}/`}>
+        <span class="idea-archive-index">{String(index + 1).padStart(2, '0')}</span><div><span class="idea-status">{statusMap[entry.data.status ?? ''] ?? status ?? entry.data.status ?? 'Seed'}</span><h2>{title}</h2><p>{description}</p></div><span class="mono">{formatDate(entry.data.date)}</span><ArrowUpRight />
+      </a>)}
+    </div> : <div class="idea-archive-empty"><Lightbulb /><h2>{t('ideas.first.title')}</h2><p>{t('ideas.first.body')}</p></div>}
+  </main>
+</Layout>

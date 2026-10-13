@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import { ArrowLeft, ArrowUpRight } from 'lucide-astro';
+import Layout from '@/layouts/Layout.astro';
+import { useTranslations } from '@/i18n/utils';
+import { localizeEntries } from '@/lib/i18n-content';
+
+const locale = 'en' as const;
+const t = useTranslations(locale);
+const games = (await getCollection('entries', ({ data }) => data.kind === 'game')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const items = await localizeEntries(games, locale);
+---
+<Layout title={t('games.title')} description={t('games.desc')}>
+  <main class="archive-page section-wrap">
+    <a class="back-link" href="/en/"><ArrowLeft /> {t('back.home')}</a>
+    <div class="archive-heading"><p class="eyebrow">{t('games.eyebrow')}</p><h1>{t('games.archive')}</h1><p>{t('games.desc')}</p></div>
+    <div class="archive-project-list">
+      {items.map(({ entry, title, description, label }) => <a class="archive-project-row game-archive-row" href={`/en/games/${entry.id.replace(/\.md$/, '')}/`}>
+        <div class={`archive-project-visual visual-${entry.data.visual}`}>{entry.data.image ? <img src={entry.data.image} alt="" loading="lazy" /> : <span>{title}</span>}</div><div><span class="project-type">{label ?? entry.data.label}</span><h2>{title}</h2><p>{description}</p></div><ArrowUpRight />
+      </a>)}
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from 'astro:content';
+import { ArrowLeft, ArrowUpRight, History, Lightbulb } from 'lucide-astro';
+import Layout from '@/layouts/Layout.astro';
+import { useTranslations } from '@/i18n/utils';
+import { localizeEntry } from '@/lib/i18n-content';
+
+export async function getStaticPaths() {
+  const versions = await getCollection('entries', ({ data }) => data.kind === 'idea-version');
+  return versions.map((version) => ({
+    params: { slug: version.data.idea, version: (version.data.version ?? version.id).toLowerCase().replaceAll('.', '-') },
+    props: { version },
+  }));
+}
+
+const { version } = Astro.props;
+const locale = 'en' as const;
+const t = useTranslations(locale);
+const ideaSlug = version.data.idea ?? '';
+const localized = await localizeEntry(version, locale);
+const { Content } = await render(localized.translation ?? version);
+---
+<Layout title={`${localized.title} ${version.data.version ?? ''} · Ideas · Baizixu`} description={localized.description}>
+  <main class="detail-page idea-detail-page section-wrap">
+    <a class="back-link" href={`/en/ideas/${ideaSlug}/`}><ArrowLeft /> {t('back.current')}</a>
+    <article class="detail-article">
+      <div class="idea-detail-meta"><span class="idea-detail-icon"><Lightbulb /></span><span class="idea-status"><History /> Historical version</span><span class="idea-version-current">{version.data.version ?? 'Untitled'}</span><span class="mono">{version.data.date.toISOString().slice(0, 10)}</span></div>
+      <h1>{localized.title}</h1><p class="detail-lede">{localized.description}</p>
+      <div class="detail-body"><Content /></div>
+    </article>
+    <a class="next-link" href={`/en/ideas/${ideaSlug}/`}><ArrowUpRight /> View current version</a>
+  </main>
+</Layout>

@@ -18,11 +18,11 @@ const t = useTranslations(locale);
       <a class="view-all" href={localizePath('/projects/', locale)}>{t('projects.viewAll')} <ArrowUpRight /></a>
     </div>
     <div class="project-grid searchable-group">
-      {projects.map(({ entry, title, description }) => <a class="project-card searchable-item" data-search={`${title} ${description} ${entry.data.label ?? ''}`} href={localizePath(`/projects/${entry.id.replace(/\.md$/, '')}/`, locale)}>
+      {projects.map(({ entry, title, description, label }) => <a class="project-card searchable-item" data-search={`${title} ${description} ${entry.data.label ?? ''}`} href={localizePath(`/projects/${entry.id.replace(/\.md$/, '')}/`, locale)}>
         <div class={`project-visual visual-${entry.data.visual}`}>
           {entry.data.image ? <img src={entry.data.image} alt={`${title}`} loading="lazy" width="900" height="600" /> : <span class="game-fallback-mark">{title}</span>}
         </div>
-        <div class="project-info"><div><span class="project-type">{entry.data.label}</span><h3>{title}</h3><p>{description}</p></div><ArrowUpRight /></div>
+        <div class="project-info"><div><span class="project-type">{label ?? entry.data.label}</span><h3>{title}</h3><p>{description}</p></div><ArrowUpRight /></div>
       </a>)}
     </div>
   </div>

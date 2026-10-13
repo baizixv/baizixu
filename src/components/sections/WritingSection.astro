@@ -21,14 +21,14 @@ const formatDate = (date: Date) => date.toISOString().slice(5, 10).replace('-', 
   </div>
   {featured && <div class="content-grid searchable-group">
     <article class="writing-feature searchable-item" data-search={`${featured.title} ${featured.description} ${featured.entry.data.tag ?? ''}`}>
-      <div class="article-meta"><span class={`tag tag-${featured.entry.data.color ?? 'blue'}`}>{featured.entry.data.tag}</span><span class="mono">{formatDate(featured.entry.data.date)} · {featured.entry.data.minutes}</span></div>
+      <div class="article-meta"><span class={`tag tag-${featured.entry.data.color ?? 'blue'}`}>{featured.tag ?? featured.entry.data.tag}</span><span class="mono">{formatDate(featured.entry.data.date)} · {featured.entry.data.minutes}</span></div>
       <h3>{featured.title}</h3>
       <p>{featured.description}</p>
       <a class="circle-link" href={localizePath(`/articles/${featured.entry.id.replace(/\.md$/, '')}/`, locale)} aria-label={featured.title}><ArrowUpRight /></a>
     </article>
     <div class="article-list">
-      {others.map(({ entry, title, description }) => <a class="article-row searchable-item" data-search={`${title} ${description} ${entry.data.tag ?? ''}`} href={localizePath(`/articles/${entry.id.replace(/\.md$/, '')}/`, locale)}>
-        <div><span class={`tag tag-${entry.data.color ?? 'blue'}`}>{entry.data.tag}</span><h3>{title}</h3><p>{description}</p></div><span class="mono">{formatDate(entry.data.date)}</span><ArrowUpRight />
+      {others.map(({ entry, title, description, tag }) => <a class="article-row searchable-item" data-search={`${title} ${description} ${tag ?? entry.data.tag ?? ''}`} href={localizePath(`/articles/${entry.id.replace(/\.md$/, '')}/`, locale)}>
+        <div><span class={`tag tag-${entry.data.color ?? 'blue'}`}>{tag ?? entry.data.tag}</span><h3>{title}</h3><p>{description}</p></div><span class="mono">{formatDate(entry.data.date)}</span><ArrowUpRight />
       </a>)}
     </div>
   </div>}

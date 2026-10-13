@@ -8,6 +8,10 @@ export interface LocalizedEntry {
   entry: Entry;
   title: string;
   description: string;
+  /** 可选的英文覆盖，缺省回退中文 frontmatter。 */
+  label?: string;
+  tag?: string;
+  status?: string;
   /** 英文译文条目（存在时用于渲染正文）。 */
   translation?: EntryEn;
 }
@@ -26,6 +30,9 @@ export const localizeEntry = async (entry: Entry, lang: Lang): Promise<Localized
         entry,
         title: translation.data.title,
         description: translation.data.description,
+        label: translation.data.label,
+        tag: translation.data.tag,
+        status: translation.data.status,
         translation,
       };
     }

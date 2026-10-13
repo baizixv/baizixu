@@ -48,6 +48,10 @@ const entriesEn = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    label: z.string().optional(),
+    tag: z.string().optional(),
+    status: z.string().optional(),
+    versionLabel: z.string().optional(),
   }),
 });
 

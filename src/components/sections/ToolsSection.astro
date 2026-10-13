@@ -23,8 +23,8 @@ const standaloneTools = tools.filter(({ entry }) => entry.data.area === 'standal
     <div class="tools-group">
       <div class="tools-group-heading"><div><span class="eyebrow">QUICK UTILITIES</span><h3>{locale === 'en' ? 'Small tools' : '常用小工具'}</h3></div></div>
       <div class="tiny-tools-grid searchable-group">
-        {toolCards.map(({ entry, title, description }) => <a class="tiny-tool-card searchable-item" data-search={`${title} ${description}`} href={localizePath(entry.data.demoUrl ?? '/tools/', locale)}>
-          <span class="tiny-tool-icon"><Braces /></span><span class="project-type">{entry.data.label}</span><h4>{title}</h4><p>{description}</p><ArrowUpRight />
+        {toolCards.map(({ entry, title, description, label }) => <a class="tiny-tool-card searchable-item" data-search={`${title} ${description}`} href={localizePath(entry.data.demoUrl ?? '/tools/', locale)}>
+          <span class="tiny-tool-icon"><Braces /></span><span class="project-type">{label ?? entry.data.label}</span><h4>{title}</h4><p>{description}</p><ArrowUpRight />
         </a>)}
         <a class="tiny-tool-card more-tool-card searchable-item" data-search={locale === 'en' ? 'More tools Online tools Tiny Tools' : '更多工具 在线工具 Tiny Tools'} href={localizePath('/tools/tiny-tools/', locale)}><span class="tiny-tool-icon"><Wrench /></span><span class="project-type">MORE TOOLS</span><h4>{locale === 'en' ? 'More tools' : '更多工具'}</h4><p>{locale === 'en' ? 'Open the toolbox and keep exploring small tools you can use right away.' : '打开工具集合，继续探索更多可以直接使用的小工具。'}</p><ArrowUpRight /></a>
       </div>

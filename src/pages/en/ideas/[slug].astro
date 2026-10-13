@@ -1,0 +1,34 @@
+---
+import { getCollection, render } from 'astro:content';
+import { ArrowLeft, ArrowUpRight, Lightbulb } from 'lucide-astro';
+import Layout from '@/layouts/Layout.astro';
+import { useTranslations } from '@/i18n/utils';
+import { localizeEntry, localizeEntries } from '@/lib/i18n-content';
+
+export async function getStaticPaths() {
+  const ideas = await getCollection('entries', ({ data }) => data.kind === 'idea');
+  return ideas.map((idea) => ({ params: { slug: idea.id.replace(/\.md$/, '') }, props: { idea } }));
+}
+
+const { idea } = Astro.props;
+const locale = 'en' as const;
+const t = useTranslations(locale);
+const localized = await localizeEntry(idea, locale);
+const versions = (await getCollection('entries', ({ data }) => data.kind === 'idea-version' && data.idea === idea.id)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const localizedVersions = await localizeEntries(versions, locale);
+const { Content } = await render(localized.translation ?? idea);
+const versionSlug = (version: string) => version.toLowerCase().replaceAll('.', '-');
+const statusMap: Record<string, string> = { '想法萌芽': 'Seed', '推敲中': 'Drafting', '准备实现': 'Ready', '实现中': 'Building', '已实现': 'Done' };
+---
+<Layout title={`${localized.title} · Ideas · Baizixu`} description={localized.description}>
+  <main class="detail-page idea-detail-page section-wrap">
+    <a class="back-link" href="/en/ideas/"><ArrowLeft /> {t('back.ideas')}</a>
+    <article class="detail-article">
+      <div class="idea-detail-meta"><span class="idea-detail-icon"><Lightbulb /></span><span class="idea-status">{statusMap[idea.data.status ?? ''] ?? localized.status ?? idea.data.status ?? 'Seed'}</span>{idea.data.version && <span class="idea-version-current">Current {idea.data.version}</span>}<span class="mono">{idea.data.date.toISOString().slice(0, 10)}</span></div>
+      <h1>{localized.title}</h1><p class="detail-lede">{localized.description}</p>
+      <div class="detail-body"><Content /></div>
+    </article>
+    {localizedVersions.length > 0 && <section class="idea-history"><div class="idea-history-heading"><div><p class="eyebrow">VERSION HISTORY</p><h2>Past versions</h2></div><span>{localizedVersions.length} versions</span></div><div class="idea-history-list">{localizedVersions.map(({ entry: version, title, status }) => <a href={`/en/ideas/${idea.id.replace(/\.md$/, '')}/versions/${versionSlug(version.data.version ?? version.id)}/`}><div><strong>{version.data.version ?? 'Untitled'}</strong><span>{status ?? version.data.versionLabel ?? 'Historical version'}</span></div><p>{title}</p><ArrowUpRight /></a>)}</div></section>}
+    <a class="next-link" href="/en/ideas/">{t('ideas.more')} <ArrowUpRight /></a>
+  </main>
+</Layout>

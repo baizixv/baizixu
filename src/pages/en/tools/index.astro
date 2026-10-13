@@ -1,0 +1,19 @@
+---
+import { ArrowLeft, ArrowUpRight, Braces, Calculator, Sparkles, Wrench } from 'lucide-astro';
+import Layout from '@/layouts/Layout.astro';
+import { useTranslations } from '@/i18n/utils';
+
+const locale = 'en' as const;
+const t = useTranslations(locale);
+---
+<Layout title={t('tools.title')} description={t('tools.desc')}>
+  <main class="tools-page section-wrap">
+    <a class="back-link" href="/en/"><ArrowLeft /> {t('back.home')}</a>
+    <header class="tools-page-header"><div><p class="eyebrow">{t('tools.eyebrow')}</p><h1>{t('tools.heading')}</h1><p>{t('tools.desc')}</p></div><div class="tools-page-mark"><Wrench /></div></header>
+    <div class="tools-directory more-tools-directory">
+      <a class="tools-directory-card tiny-directory-card" href="/tools/tiny-tools/"><span class="tools-directory-icon"><Braces /></span><span class="eyebrow">MORE TOOLS</span><h2>{t('tools.moreTools.title')}</h2><p>{t('tools.moreTools.desc')}</p><span class="tools-directory-link">{t('tools.open')} <ArrowUpRight /></span></a>
+      <a class="tools-directory-card finance-directory-card" href="/tools/finance/"><span class="tools-directory-icon"><Calculator /></span><span class="eyebrow">FINANCE</span><h2>{t('tools.finance.title')}</h2><p>{t('tools.finance.desc')}</p><span class="tools-directory-link">{t('tools.calculate')} <ArrowUpRight /></span></a>
+    </div>
+    <div class="tools-page-foot"><Sparkles /><p>{t('tools.foot')}</p></div>
+  </main>
+</Layout>

@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import { ArrowLeft, ArrowUpRight } from 'lucide-astro';
+import Layout from '@/layouts/Layout.astro';
+import { useTranslations } from '@/i18n/utils';
+import { localizeEntries } from '@/lib/i18n-content';
+
+const locale = 'en' as const;
+const t = useTranslations(locale);
+const articles = (await getCollection('entries', ({ data }) => data.kind === 'article')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const items = await localizeEntries(articles, locale);
+const formatDate = (date: Date) => date.toISOString().slice(0, 10);
+---
+<Layout title={t('articles.title')} description={t('articles.desc')}>
+  <main class="archive-page section-wrap">
+    <a class="back-link" href="/en/"><ArrowLeft /> {t('back.home')}</a>
+    <div class="archive-heading"><p class="eyebrow">{t('writing.eyebrow')}</p><h1>{t('articles.heading')}</h1><p>{t('articles.desc')}</p></div>
+    <div class="archive-list">
+      {items.map(({ entry, title, description, tag }) => <a class="archive-row" href={`/en/articles/${entry.id.replace(/\.md$/, '')}/`}>
+        <span class={`tag tag-${entry.data.color ?? 'blue'}`}>{tag ?? entry.data.tag}</span><div><h2>{title}</h2><p>{description}</p></div><span class="mono">{formatDate(entry.data.date)}</span><ArrowUpRight />
+      </a>)}
+    </div>
+  </main>
+</Layout>

@@ -17,8 +17,8 @@ const iconMap = { layers: Layers, type: Type, github: Github, 'book-open': BookO
     <div class="library-layout">
     <div class="section-heading library-heading"><div><p class="eyebrow">{t('library.eyebrow')}</p><h2>{t('library.heading')}</h2></div><p class="heading-note">{t('library.note')}</p></div>
     <div class="library-list searchable-group">
-      {bookmarks.map(({ entry, title, description }, index) => { const Icon = iconMap[entry.data.icon ?? 'layers']; return <a class="library-row searchable-item" data-search={`${title} ${description} ${entry.data.label ?? ''}`} href={entry.data.url} target="_blank" rel="noreferrer">
-        <span class="library-index">{String(index + 1).padStart(2, '0')}</span><span class={`library-icon ${entry.data.color}-icon`}><Icon /></span><span class="library-name"><strong>{title}</strong><small>{description}</small></span><span class="library-kind">{entry.data.label}</span><span class="external-label">{t('library.external')}</span><ExternalLink />
+      {bookmarks.map(({ entry, title, description, label }, index) => { const Icon = iconMap[entry.data.icon ?? 'layers']; return <a class="library-row searchable-item" data-search={`${title} ${description} ${entry.data.label ?? ''}`} href={entry.data.url} target="_blank" rel="noreferrer">
+        <span class="library-index">{String(index + 1).padStart(2, '0')}</span><span class={`library-icon ${entry.data.color}-icon`}><Icon /></span><span class="library-name"><strong>{title}</strong><small>{description}</small></span><span class="library-kind">{label ?? entry.data.label}</span><span class="external-label">{t('library.external')}</span><ExternalLink />
       </a>; })}
     </div>
     </div>

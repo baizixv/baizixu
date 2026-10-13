@@ -1,0 +1,44 @@
+---
+import { ArrowUpRight, Check, Clock3, Compass, Mail, Sparkles } from 'lucide-astro';
+import Layout from '@/layouts/Layout.astro';
+import { getAbout } from '@/data/about';
+import { useTranslations } from '@/i18n/utils';
+
+const locale = 'en' as const;
+const t = useTranslations(locale);
+const about = getAbout(locale);
+---
+<Layout title={t('about.title')} description={t('meta.description')}>
+  <main class="about-page section-wrap">
+    <div class="about-page-head">
+      <div><p class="eyebrow">{t('about.eyebrow')}</p><h1>{t('about.heading')}<br /><em>{t('about.headingAccent')}.</em></h1></div>
+      <p class="about-page-lede">{t('about.lede')}</p>
+    </div>
+
+    <section class="about-author-block">
+      <div class="about-author-mark">B</div>
+      <div class="about-author-copy"><p class="eyebrow">{t('about.person')}</p><h2>{about.name}</h2><p>{about.intro}</p><div class="about-meta"><span><Compass /> {about.location}</span><span><Sparkles /> {about.availability}</span></div></div>
+      <a class="mail-button" href={`mailto:${about.email}`}><Mail /><span>{about.email}</span><ArrowUpRight /></a>
+    </section>
+
+    <section class="about-stats">
+      {about.stats.map((stat) => <div><span>{stat.value}</span><small>{stat.label}</small></div>)}
+    </section>
+
+    <section class="about-progress">
+      <div class="about-section-heading"><div><p class="eyebrow">{t('about.progressEyebrow')}</p><h2>{t('about.progress')}</h2></div><p>{t('about.progressNote')}</p></div>
+      <div class="progress-list">
+        {about.progress.map((item) => <article class="progress-item"><div class="progress-item-head"><div><h3>{item.name}</h3><p>{item.detail}</p></div><span class={`progress-status progress-${item.color}`}><Clock3 /> {item.status}</span></div><div class="about-progress-bar"><span class={`bar-${item.color}`} style={`width: ${item.percent}%`}></span></div><div class="progress-percent"><span>{t('about.progressLabel')}</span><b>{item.percent}%</b></div></article>)}
+      </div>
+    </section>
+
+    <section class="about-releases">
+      <div class="about-section-heading"><div><p class="eyebrow">{t('about.changelogEyebrow')}</p><h2>{t('about.changelog')}</h2></div><p>{t('about.changelogNote')}</p></div>
+      <div class="release-list">
+        {about.releases.map((release, index) => <article class="release-item"><div class="release-version"><strong>{release.version}</strong><small>{release.date}</small></div><div class="release-copy"><h3>{release.title} {index === 0 && <span class="current-release"><Check /> {t('about.current')}</span>}</h3><p>{release.description}</p></div></article>)}
+      </div>
+    </section>
+
+    <a class="back-link about-back" href="/en/"><ArrowUpRight /> {t('about.back')}</a>
+  </main>
+</Layout>

@@ -1,0 +1,35 @@
+---
+import { getCollection, render } from 'astro:content';
+import { ArrowLeft, ArrowUpRight, ExternalLink, Gamepad2 } from 'lucide-astro';
+import Layout from '@/layouts/Layout.astro';
+import { useTranslations } from '@/i18n/utils';
+import { localizeEntry } from '@/lib/i18n-content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('entries', ({ data }) => data.kind === 'project');
+  return projects.map((project) => ({ params: { slug: project.id.replace(/\.md$/, '') }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const locale = 'en' as const;
+const t = useTranslations(locale);
+const localized = await localizeEntry(project, locale);
+const { Content } = await render(localized.translation ?? project);
+---
+<Layout title={`${localized.title} · Baizixu`} description={localized.description}>
+  <main class="detail-page section-wrap">
+    <a class="back-link" href="/en/"><ArrowLeft /> {t('back.home')}</a>
+    <article class="detail-article">
+      <span class="project-type">{localized.label ?? project.data.label}</span>
+      <h1>{localized.title}</h1>
+      <p class="detail-lede">{localized.description}</p>
+      {project.data.image && <img class="detail-cover" src={project.data.image} alt={`${localized.title} cover`} width="900" height="600" />}
+      <div class="detail-actions">
+        {project.data.demoUrl && <a class="internal-demo-link" href={project.data.demoUrl}><Gamepad2 /><span>{t('projects.demo')}</span><ArrowUpRight /></a>}
+        {project.data.url?.startsWith('http') && <a class="external-project-link" href={project.data.url} target="_blank" rel="noreferrer"><ExternalLink /><span>{t('projects.external')}</span><ArrowUpRight /></a>}
+      </div>
+      <div class="detail-body"><Content /></div>
+    </article>
+    <a class="next-link" href="/en/#projects">{t('projects.more')} <ArrowUpRight /></a>
+  </main>
+</Layout>
