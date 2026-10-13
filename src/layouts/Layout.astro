@@ -1,5 +1,5 @@
 ---
-import { Download, Moon, Palette, Search, Sun } from 'lucide-astro';
+import { Check, Download, Globe, Moon, Palette, Search, Sun } from 'lucide-astro';
 import ContactModal from '@/components/shared/ContactModal.astro';
 import { themes, defaultTheme } from '@/data/themes';
 import { defaultLang, languages, type Lang } from '@/i18n/ui';
@@ -31,7 +31,7 @@ const nav = [
 ] as const;
 const langLinks = (Object.keys(languages) as Lang[]).map((lng) => ({
   lng,
-  label: lng === 'zh' ? '中' : 'EN',
+  label: languages[lng],
   href: switchLangPath(Astro.url.pathname, lng),
 }));
 ---
@@ -108,10 +108,19 @@ const langLinks = (Object.keys(languages) as Lang[]).map((lng) => ({
               ))}
             </div>
           </div>
-          <div class="lang-switch" role="group" aria-label={t('lang.switch')}>
-            {langLinks.map(({ lng, label, href }) => (
-              <a href={href} hreflang={lng} aria-current={lng === locale ? 'true' : undefined}>{label}</a>
-            ))}
+          <div class="lang-menu" id="lang-menu">
+            <button class="icon-button" id="lang-button" type="button" aria-label={t('lang.switch')} title={t('lang.switch')} aria-haspopup="true" aria-expanded="false">
+              <Globe aria-hidden="true" />
+            </button>
+            <div class="skin-panel lang-panel" id="lang-panel" hidden>
+              <p class="skin-panel-title">{t('lang.switch')}</p>
+              {langLinks.map(({ lng, label, href }) => (
+                <a class="skin-option lang-option" href={href} hreflang={lng} aria-current={lng === locale ? 'true' : undefined}>
+                  <span class="skin-option-copy"><strong>{label}</strong><small>{lng.toUpperCase()}</small></span>
+                  {lng === locale && <Check class="lang-check" aria-hidden="true" />}
+                </a>
+              ))}
+            </div>
           </div>
           <button class="icon-button" id="theme-toggle" type="button" aria-label={t('theme.toggle.dark')} title={t('theme.toggle.dark')}>
             <Sun class="theme-sun" aria-hidden="true" />

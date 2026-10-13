@@ -140,23 +140,8 @@ input {
   min-width: 280px;
   justify-content: flex-end;
 }
-.lang-switch {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-}
-.lang-switch a {
-  padding: 5px 6px;
-  color: var(--muted);
-  font: 500 11px "DM Mono", monospace;
-  border-bottom: 2px solid transparent;
-}
-.lang-switch a[aria-current="true"] {
-  color: var(--ink);
-  border-bottom-color: var(--ink);
-}
-.lang-switch a:hover {
-  color: var(--ink);
+.lang-menu {
+  position: relative;
 }
 .search-box {
   height: 36px;
