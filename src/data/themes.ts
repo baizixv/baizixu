@@ -14,6 +14,7 @@ export interface ThemeOption {
 export const themes: ThemeOption[] = [
   { id: 'brutalist', name: '粗野实验室', description: '硬边框 · 撞色 · 硬投影' },
   { id: 'terminal', name: '终端极客', description: '黑底 · 荧光绿 · 等宽字体', preferDark: true },
+  { id: 'editorial', name: '杂志编辑', description: '黑白极简 · 衬线标题 · 红色点缀' },
 ];
 
 export const defaultTheme = themes[0].id;

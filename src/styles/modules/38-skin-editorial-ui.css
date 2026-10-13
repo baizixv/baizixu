@@ -1,0 +1,218 @@
+/* 38 Skin: editorial — UI, sections and cards
+ * 组件、首页区块与卡片。依赖 37 的 Token。
+ */
+/* Buttons, links, tags --------------------------------------------------- */
+html[data-skin="editorial"] .button,
+html[data-skin="editorial"] .mail-button,
+html[data-skin="editorial"] .game-launch,
+html[data-skin="editorial"] .internal-demo-link,
+html[data-skin="editorial"] .external-project-link {
+  border: 1px solid var(--ink);
+  box-shadow: none;
+  font-family: "Manrope", "Noto Sans SC", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+html[data-skin="editorial"] .button-dark {
+  background: var(--ink);
+  color: var(--paper);
+}
+html[data-skin="editorial"] .mail-button {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+html[data-skin="editorial"] .external-project-link {
+  background: var(--ink);
+  color: var(--paper);
+}
+html[data-skin="editorial"] .internal-demo-link {
+  background: transparent;
+  color: var(--ink);
+}
+html[data-skin="editorial"] .button:hover,
+html[data-skin="editorial"] .mail-button:hover,
+html[data-skin="editorial"] .game-launch:hover,
+html[data-skin="editorial"] .internal-demo-link:hover,
+html[data-skin="editorial"] .external-project-link:hover {
+  transform: none;
+  box-shadow: none;
+  opacity: 0.85;
+}
+html[data-skin="editorial"] .text-link,
+html[data-skin="editorial"] .view-all,
+html[data-skin="editorial"] .next-link {
+  border-bottom: 1px solid currentColor;
+  color: var(--blue);
+}
+html[data-skin="editorial"] .tag,
+html[data-skin="editorial"] .media-type-badge {
+  border-width: 1px;
+}
+html[data-skin="editorial"] .circle-link {
+  border: 1px solid var(--line);
+  background: transparent;
+  box-shadow: none;
+}
+html[data-skin="editorial"] .circle-link:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Hero / now / ticker ---------------------------------------------------- */
+html[data-skin="editorial"] .status-dot {
+  background: var(--blue);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--blue) 15%, transparent);
+}
+html[data-skin="editorial"] .stats {
+  border-top: 1px solid var(--line);
+}
+html[data-skin="editorial"] .now-panel {
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+html[data-skin="editorial"] .now-image-wrap {
+  border: 1px solid var(--line);
+}
+html[data-skin="editorial"] .image-tag {
+  background: var(--blue);
+  color: #fff;
+  border: 0;
+}
+html[data-skin="editorial"] .now-image-fallback {
+  background: var(--blue);
+  color: #fff;
+}
+html[data-skin="editorial"] .now-content:hover h2 {
+  color: var(--blue);
+}
+html[data-skin="editorial"] .progress {
+  height: 3px;
+  border: 0;
+  background: var(--line);
+}
+html[data-skin="editorial"] .progress span {
+  background: var(--blue);
+}
+html[data-skin="editorial"] .ticker-band {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+}
+html[data-skin="editorial"] .ticker-track b {
+  color: #fff;
+  opacity: 0.65;
+}
+
+/* Sections and cards ----------------------------------------------------- */
+html[data-skin="editorial"] .content-section,
+html[data-skin="editorial"] .projects-section,
+html[data-skin="editorial"] .games-section,
+html[data-skin="editorial"] .media-library-section,
+html[data-skin="editorial"] .tools-section,
+html[data-skin="editorial"] .library-section,
+html[data-skin="editorial"] .ideas-section,
+html[data-skin="editorial"] .about-preview,
+html[data-skin="editorial"] .closing {
+  border-top: 1px solid var(--line);
+}
+html[data-skin="editorial"] .projects-section {
+  border-top-color: var(--ink);
+}
+html[data-skin="editorial"] .projects-section::before,
+html[data-skin="editorial"] .games-section::before,
+html[data-skin="editorial"] .media-library-section::before,
+html[data-skin="editorial"] .tools-section::before,
+html[data-skin="editorial"] .ideas-section::before {
+  width: 48px;
+  height: 3px;
+  border: 0;
+  background: var(--blue);
+}
+html[data-skin="editorial"] .projects-section .view-all {
+  color: var(--paper);
+  border-color: rgb(255 255 255 / 0.45);
+}
+html[data-skin="editorial"] .projects-section .project-visual {
+  border: 1px solid rgb(255 255 255 / 0.22);
+}
+html[data-skin="editorial"] .projects-section .project-info {
+  border-bottom: 1px solid rgb(255 255 255 / 0.22);
+}
+html[data-skin="editorial"] .projects-section .visual-ogden {
+  background: var(--paper);
+  color: var(--ink);
+}
+html[data-skin="editorial"] .project-visual,
+html[data-skin="editorial"] .media-card,
+html[data-skin="editorial"] .media-empty,
+html[data-skin="editorial"] .idea-card,
+html[data-skin="editorial"] .ideas-empty,
+html[data-skin="editorial"] .tiny-tool-card,
+html[data-skin="editorial"] .standalone-tool-card,
+html[data-skin="editorial"] .about-preview-card {
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+html[data-skin="editorial"] .project-card:hover .project-visual,
+html[data-skin="editorial"] .game-card:hover .project-visual,
+html[data-skin="editorial"] .media-card:hover,
+html[data-skin="editorial"] .media-empty:hover,
+html[data-skin="editorial"] .tiny-tool-card:hover,
+html[data-skin="editorial"] .idea-card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--ink);
+}
+html[data-skin="editorial"] .games-symbol,
+html[data-skin="editorial"] .tools-symbol {
+  background: transparent;
+  border: 1px solid var(--ink);
+  color: var(--blue);
+}
+html[data-skin="editorial"] .game-play {
+  border: 0;
+  background: var(--blue);
+  color: #fff;
+  box-shadow: none;
+}
+html[data-skin="editorial"] .game-info {
+  border-bottom: 1px solid var(--line);
+}
+html[data-skin="editorial"] .library-list,
+html[data-skin="editorial"] .library-section .library-list {
+  border-top: 1px solid var(--ink);
+}
+html[data-skin="editorial"] .library-row,
+html[data-skin="editorial"] .library-section .library-row {
+  border-bottom: 1px solid var(--line);
+}
+html[data-skin="editorial"] .library-icon {
+  border: 1px solid var(--line);
+}
+html[data-skin="editorial"] .media-card-mark {
+  border: 0;
+}
+html[data-skin="editorial"] .more-tool-card,
+html[data-skin="editorial"] .finance-directory-card {
+  background: var(--paper-deep);
+  border-color: var(--line);
+}
+html[data-skin="editorial"] .about-avatar,
+html[data-skin="editorial"] .about-author-mark {
+  background: var(--ink);
+  color: var(--paper);
+  border: 0;
+}
+html[data-skin="editorial"] .writing-feature {
+  border-top: 1px solid var(--ink);
+}
+html[data-skin="editorial"] .article-row,
+html[data-skin="editorial"] .article-row:last-child {
+  border-color: var(--line);
+}
+html[data-skin="editorial"] .footer {
+  border-top: 1px solid var(--line);
+}
+

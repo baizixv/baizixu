@@ -223,6 +223,9 @@
 .skin-swatch[data-swatch="terminal"] {
   background: linear-gradient(135deg, #05070a 50%, #38ff85 50%);
 }
+.skin-swatch[data-swatch="editorial"] {
+  background: linear-gradient(135deg, #faf8f4 50%, #c8102e 50%);
+}
 .skin-option-copy {
   display: flex;
   flex-direction: column;

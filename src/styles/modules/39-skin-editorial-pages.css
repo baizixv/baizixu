@@ -1,0 +1,130 @@
+/* 39 Skin: editorial — overlays and pages
+ * 浮层、详情、归档、关于与独立工具页。
+ */
+/* Overlays --------------------------------------------------------------- */
+html[data-skin="editorial"] .search-panel,
+html[data-skin="editorial"] .contact-modal-card,
+html[data-skin="editorial"] .skin-panel {
+  border: 1px solid var(--line);
+  background: var(--white);
+  box-shadow: 0 18px 50px rgb(0 0 0 / 0.12);
+}
+html[data-skin="editorial"] .search-ai-row {
+  background: var(--paper-deep);
+  border-bottom: 1px solid var(--line);
+}
+html[data-skin="editorial"] .search-ai-row.active,
+html[data-skin="editorial"] .search-result.active {
+  background: var(--blue);
+  color: #fff;
+}
+html[data-skin="editorial"] .search-ai-row.active span:first-child {
+  color: #fff;
+}
+html[data-skin="editorial"] .contact-row {
+  border-top: 1px solid var(--line);
+}
+html[data-skin="editorial"] .contact-copy {
+  border: 1px solid var(--line);
+}
+html[data-skin="editorial"] .skin-option {
+  border: 1px solid transparent;
+}
+html[data-skin="editorial"] .skin-option:hover,
+html[data-skin="editorial"] .skin-option.active {
+  border-color: var(--ink);
+  background: var(--accent-soft);
+  box-shadow: none;
+}
+html[data-skin="editorial"] .skin-swatch {
+  border: 1px solid var(--ink);
+}
+
+/* Detail / archive / about / tools --------------------------------------- */
+html[data-skin="editorial"] .detail-lede {
+  border-bottom: 1px solid var(--line);
+}
+html[data-skin="editorial"] .detail-cover {
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+html[data-skin="editorial"] .detail-body h2 {
+  border-bottom: 1px solid var(--line);
+}
+html[data-skin="editorial"] .detail-body table,
+html[data-skin="editorial"] .detail-body th,
+html[data-skin="editorial"] .detail-body td {
+  border: 1px solid var(--line);
+}
+html[data-skin="editorial"] .detail-body th {
+  background: var(--paper-deep);
+  color: var(--ink);
+}
+html[data-skin="editorial"] .detail-body code {
+  background: var(--paper-deep);
+  border: 1px solid var(--line);
+}
+html[data-skin="editorial"] .detail-body pre {
+  background: var(--paper-deep);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+html[data-skin="editorial"] .detail-body img {
+  border: 1px solid var(--line);
+}
+html[data-skin="editorial"] .archive-list,
+html[data-skin="editorial"] .archive-project-list,
+html[data-skin="editorial"] .idea-archive-list {
+  border-top: 1px solid var(--ink);
+}
+html[data-skin="editorial"] .archive-project-visual {
+  border: 1px solid var(--line);
+}
+html[data-skin="editorial"] .library-status-group {
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+html[data-skin="editorial"] .about-author-block {
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+html[data-skin="editorial"] .about-stats div {
+  border-left: 1px solid var(--line);
+}
+html[data-skin="editorial"] .about-progress,
+html[data-skin="editorial"] .about-releases,
+html[data-skin="editorial"] .idea-history {
+  border-top: 1px solid var(--ink);
+}
+html[data-skin="editorial"] .progress-item,
+html[data-skin="editorial"] .release-item,
+html[data-skin="editorial"] .idea-history-list a {
+  border-color: var(--line);
+}
+html[data-skin="editorial"] .about-progress-bar {
+  height: 4px;
+  border: 0;
+  background: var(--line);
+}
+html[data-skin="editorial"] .tool-workbench,
+html[data-skin="editorial"] .json-workbench {
+  border-top: 1px solid var(--ink);
+}
+html[data-skin="editorial"] .tool-panel {
+  border: 1px solid var(--ink);
+  box-shadow: none;
+}
+html[data-skin="editorial"] .tool-fields textarea,
+html[data-skin="editorial"] .json-column textarea {
+  border: 1px solid var(--line);
+}
+html[data-skin="editorial"] .tool-tab.active {
+  border: 1px solid var(--ink);
+  border-left: 3px solid var(--blue);
+  background: var(--paper-deep);
+}
+html[data-skin="editorial"] .tool-tab:hover {
+  border: 1px solid var(--line);
+  background: transparent;
+}

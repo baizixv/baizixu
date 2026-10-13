@@ -1,0 +1,121 @@
+/* 37 Skin: editorial — tokens, type and shell
+ * 杂志编辑皮肤：黑白极简、衬线标题、红色点缀。增量覆盖，勿改布局。
+ */
+html[data-skin="editorial"] {
+  background: #faf8f4;
+}
+html[data-skin="editorial"] body {
+  --paper: #faf8f4;
+  --paper-deep: #f0ece4;
+  --white: #ffffff;
+  --ink: #16120f;
+  --muted: #6f6a62;
+  --line: #d9d3c8;
+  --dark: #12100e;
+  --blue: #c8102e;
+  --yellow: #b9964b;
+  --pink: #b58a8d;
+  --green: #6f7f6a;
+  --accent-soft: #f7eceb;
+  --shadow-sm: none;
+  --shadow: none;
+  background: var(--paper);
+  color: var(--ink);
+}
+html[data-skin="editorial"][data-theme="dark"] body,
+html[data-skin="editorial"] body.dark {
+  --paper: #121110;
+  --paper-deep: #1c1a18;
+  --white: #171614;
+  --ink: #f2eee6;
+  --muted: #a49e93;
+  --line: #38342e;
+  --dark: #0c0b0a;
+  --blue: #e5483f;
+  --yellow: #c9a86a;
+  --pink: #c99a9e;
+  --green: #9fb098;
+  --accent-soft: #241f1e;
+}
+
+/* Type ------------------------------------------------------------------- */
+html[data-skin="editorial"] h1,
+html[data-skin="editorial"] h2,
+html[data-skin="editorial"] h3,
+html[data-skin="editorial"] h4,
+html[data-skin="editorial"] .brand-copy strong,
+html[data-skin="editorial"] .media-card h3,
+html[data-skin="editorial"] .library-catalog-item h3 {
+  font-family: "Playfair Display", "Noto Serif SC", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+html[data-skin="editorial"] .hero h1 {
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+html[data-skin="editorial"] .detail-body {
+  font-family: "Noto Serif SC", Georgia, serif;
+  font-size: 16px;
+  line-height: 2.05;
+}
+html[data-skin="editorial"] .eyebrow,
+html[data-skin="editorial"] .projects-section .eyebrow,
+html[data-skin="editorial"] .games-section .games-heading .eyebrow,
+html[data-skin="editorial"] .media-library-section .eyebrow,
+html[data-skin="editorial"] .tools-section .eyebrow,
+html[data-skin="editorial"] .ideas-section .eyebrow {
+  color: var(--blue);
+}
+
+/* Shell ------------------------------------------------------------------ */
+html[data-skin="editorial"] .topbar {
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+html[data-skin="editorial"] .brand-mark {
+  background: transparent;
+  border: 0;
+}
+html[data-skin="editorial"] .main-nav {
+  gap: 26px;
+}
+html[data-skin="editorial"] .main-nav a,
+html[data-skin="editorial"] .main-nav a:hover,
+html[data-skin="editorial"] .main-nav a.active {
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+}
+html[data-skin="editorial"] .main-nav a:hover,
+html[data-skin="editorial"] .main-nav a.active {
+  color: var(--ink);
+  border-bottom-color: var(--blue);
+}
+html[data-skin="editorial"] .icon-button {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+}
+html[data-skin="editorial"] .icon-button:hover {
+  box-shadow: none;
+  transform: none;
+  border-color: var(--ink);
+}
+html[data-skin="editorial"] .search-box {
+  border: 1px solid var(--line);
+  background: transparent;
+}
+html[data-skin="editorial"] .search-box:focus-within {
+  box-shadow: none;
+  border-color: var(--ink);
+}
+html[data-skin="editorial"] kbd {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  font-weight: 400;
+}
+
