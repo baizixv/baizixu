@@ -51,12 +51,7 @@ const setupSite = () => {
     const option = themes.find((theme) => theme.id === known);
     document.documentElement.dataset.skin = known;
     if (persist) writeStorage(themeStorageKey, known);
-    if (option?.preferDark) {
-      body.classList.add("dark");
-      document.documentElement.dataset.theme = "dark";
-      if (persist) writeStorage("bai-theme", "dark");
-      syncThemeLabel();
-    }
+    // 切皮肤只改外观，不动用户的明暗偏好（terminal 本身是深色皮肤，由 CSS 表现）。
     skinOptions.forEach((item) => item.classList.toggle("active", item.dataset.skinOption === known));
     skinButton?.setAttribute("aria-label", `${labels.skinStyle}（${option?.name ?? known}）`);
   };
@@ -74,21 +69,6 @@ const setupSite = () => {
   skinButton?.addEventListener("click", onSkinToggle);
   skinPanel?.addEventListener("click", onSkinSelect);
   document.addEventListener("click", onSkinOutside);
-
-  // 语言切换菜单（地球图标 + 下拉）
-  const langMenu = document.querySelector<HTMLDivElement>("#lang-menu");
-  const langButton = document.querySelector<HTMLButtonElement>("#lang-button");
-  const langPanel = document.querySelector<HTMLDivElement>("#lang-panel");
-  const setLangPanelOpen = (open: boolean) => {
-    langPanel?.toggleAttribute("hidden", !open);
-    langButton?.setAttribute("aria-expanded", String(open));
-  };
-  const onLangToggle = () => setLangPanelOpen(langPanel?.hasAttribute("hidden") ?? false);
-  const onLangOutside = (event: MouseEvent) => {
-    if (langMenu && !langMenu.contains(event.target as Node)) setLangPanelOpen(false);
-  };
-  langButton?.addEventListener("click", onLangToggle);
-  document.addEventListener("click", onLangOutside);
 
   const cleanupSearch = setupSearch();
 
@@ -151,7 +131,6 @@ const setupSite = () => {
     if (event.key !== "Escape") return;
     closeContactModal();
     setSkinPanelOpen(false);
-    setLangPanelOpen(false);
   };
   contactModal?.addEventListener("click", onModalClick);
   contactModal?.addEventListener("click", onCopyClick);
@@ -187,8 +166,6 @@ const setupSite = () => {
     skinButton?.removeEventListener("click", onSkinToggle);
     skinPanel?.removeEventListener("click", onSkinSelect);
     document.removeEventListener("click", onSkinOutside);
-    langButton?.removeEventListener("click", onLangToggle);
-    document.removeEventListener("click", onLangOutside);
     cleanupSearch();
     contactModal?.removeEventListener("click", onModalClick);
     contactModal?.removeEventListener("click", onCopyClick);

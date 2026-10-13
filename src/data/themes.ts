@@ -7,14 +7,12 @@ export interface ThemeOption {
   id: string;
   name: string;
   description: string;
-  /** 选择该皮肤时是否自动切到深色（深色为基础的皮肤填 true）。 */
-  preferDark?: boolean;
 }
 
 export const themes: ThemeOption[] = [
   { id: 'brutalist', name: '粗野实验室', description: '硬边框 · 撞色 · 硬投影' },
   { id: 'quiet', name: '静音纸感', description: '单色 · 去边框 · 留白优先' },
-  { id: 'terminal', name: '终端极客', description: '黑底 · 荧光绿 · 等宽字体', preferDark: true },
+  { id: 'terminal', name: '终端极客', description: '黑底 · 荧光绿 · 等宽字体' },
   { id: 'editorial', name: '杂志编辑', description: '黑白极简 · 衬线标题 · 红色点缀' },
 ];
 
