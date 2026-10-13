@@ -1,7 +1,7 @@
 ---
 title: ShowMeClothes / AI try-on
-description: Upload a photo, pick a piece of clothing, and generate a 10-second AI try-on video.
-label: AI try-on · Next.js / TypeScript
+description: Upload a photo, pick a garment and generate a 10-second try-on video.
+label: AI app · Web
 ---
 
 ## About the project

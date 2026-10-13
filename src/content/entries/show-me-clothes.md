@@ -1,9 +1,9 @@
 ---
 kind: project
 title: ShowMeClothes / AI 试穿
-description: 上传一张照片、挑一件心仪的衣服，用 AI 生成一段 10 秒动态试穿视频。
+description: 上传照片、挑好衣服，用 AI 生成 10 秒试穿视频。
 date: 2026-09-23
-label: AI 试穿 · Next.js / TypeScript
+label: AI 应用 · Web
 visual: clothes
 image: /assets/project-show-me-clothes.svg
 url: https://clothes.baizixu.com/

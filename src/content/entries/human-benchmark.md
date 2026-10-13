@@ -1,9 +1,9 @@
 ---
 kind: project
 title: 人类基准测试 / Human Benchmark
-description: 通过脑力游戏和认知测试，了解自己的反应速度、记忆力、注意力与手眼协调能力。
+description: 用脑力测试了解反应、记忆与注意力水平。
 date: 2025-03-21
-label: 在线测试 · 认知训练
+label: 认知训练 · Web
 visual: benchmark
 image: /assets/project-human-benchmark.png
 demoUrl: /games/human-benchmark/

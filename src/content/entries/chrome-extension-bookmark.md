@@ -1,9 +1,9 @@
 ---
 kind: project
 title: 书签快存 / Bookmark Quick Save
-description: 一个让当前页面快速保存到指定书签位置的 Chrome 扩展。
+description: 把当前页面一键保存到指定书签位置。
 date: 2025-03-20
-label: Chrome 扩展 · React / TypeScript
+label: 浏览器扩展 · Chrome
 visual: extension
 image: /assets/project-bookmark-extension.png
 url: https://github.com/baizixv/chrome-extension-bookmark

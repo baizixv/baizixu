@@ -1,9 +1,9 @@
 ---
 kind: project
 title: Ogden 850 / 基础英语
-description: 用 850 个最基本的英语单词，练习理解、记忆和表达。
+description: 用 850 个基础英语单词练习理解、记忆与表达。
 date: 2025-03-22
-label: 英语学习 · 本地训练
+label: 英语学习 · Web
 visual: ogden
 demoUrl: /projects/ogden-850/play/
 url: https://ogden850.netlify.app/

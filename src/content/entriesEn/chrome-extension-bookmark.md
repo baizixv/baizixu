@@ -1,7 +1,7 @@
 ---
 title: Bookmark Quick Save
-description: A Chrome extension that saves the current page straight into a chosen bookmark position.
-label: Chrome extension · React / TypeScript
+description: Save the current page to a chosen bookmark position in one click.
+label: Browser extension · Chrome
 ---
 
 ## About the project

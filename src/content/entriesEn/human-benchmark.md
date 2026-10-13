@@ -1,7 +1,7 @@
 ---
 title: Human Benchmark
-description: Explore your reaction speed, memory, attention and hand-eye coordination through brain games and cognitive tests.
-label: Online tests · Cognitive training
+description: Test your reaction, memory and attention with short brain games.
+label: Cognitive tests · Web
 ---
 
 ## About the project

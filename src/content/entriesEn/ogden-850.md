@@ -1,7 +1,7 @@
 ---
 title: Ogden 850 / Basic English
-description: Practise comprehension, memory and expression with the 850 most basic English words.
-label: English learning · Local practice
+description: Practise comprehension, memory and expression with 850 basic words.
+label: English · Web
 ---
 
 ## About the project
