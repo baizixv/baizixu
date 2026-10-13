@@ -16,6 +16,7 @@
 .projects-section .project-card {
   background: var(--white);
   border: 2px solid var(--ink);
+  padding: 16px;
   transition: transform 0.15s, box-shadow 0.15s;
 }
 .projects-section .project-card:hover {
@@ -53,9 +54,9 @@
   color: var(--muted);
 }
 .projects-section .project-info {
-  border-top: 2px solid var(--ink);
+  border-top: 0;
   border-bottom: 0;
-  padding: 16px 18px 20px;
+  padding: 16px 0 0;
 }
 .games-section .project-visual {
   background: var(--paper-deep);
