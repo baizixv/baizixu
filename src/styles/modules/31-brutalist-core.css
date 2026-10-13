@@ -4,36 +4,36 @@
  * the restyle reversible and independent from the grid modules.
  */
 :root {
-  --paper: #f1ece0;
-  --paper-deep: #e3dcc8;
-  --white: #fffdf3;
-  --ink: #111111;
-  --muted: #4c4840;
-  --line: #111111;
-  --dark: #111111;
-  --blue: #2b4bff;
+  --paper: #f2eee2;
+  --paper-deep: #e6dfca;
+  --white: #fffdf4;
+  --ink: #12100d;
+  --muted: #575247;
+  --line: #12100d;
+  --dark: #12100d;
+  --blue: #2f4bff;
   --yellow: #ffd60a;
-  --pink: #ff4f86;
-  --green: #14b96b;
-  --accent-soft: #dde3ff;
+  --pink: #e85c85;
+  --green: #2aa96c;
+  --accent-soft: #e2e7ff;
   --border: 2px solid var(--ink);
   --shadow-sm: 3px 3px 0 var(--ink);
   --shadow: 6px 6px 0 var(--ink);
 }
 html[data-theme="dark"] body,
 body.dark {
-  --paper: #131313;
-  --paper-deep: #1e1e1e;
-  --white: #1a1a1a;
-  --ink: #f2efe4;
-  --muted: #b4b0a4;
-  --line: #f2efe4;
-  --dark: #0a0a0a;
-  --blue: #8095ff;
+  --paper: #141312;
+  --paper-deep: #1f1d1b;
+  --white: #1a1917;
+  --ink: #f3efe4;
+  --muted: #b0aa9d;
+  --line: #f3efe4;
+  --dark: #0c0b0a;
+  --blue: #8ea2ff;
   --yellow: #ffd60a;
-  --pink: #ff6f9c;
-  --green: #2fd487;
-  --accent-soft: #232a45;
+  --pink: #f08aa6;
+  --green: #5cc48f;
+  --accent-soft: #232a42;
   --shadow-sm: 3px 3px 0 var(--blue);
   --shadow: 6px 6px 0 var(--blue);
 }

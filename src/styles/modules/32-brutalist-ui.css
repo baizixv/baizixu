@@ -229,6 +229,9 @@
 .skin-swatch[data-swatch="quiet"] {
   background: linear-gradient(135deg, #f6f5f2 50%, #5b6b8c 50%);
 }
+.skin-swatch[data-swatch="brutalist-alt"] {
+  background: linear-gradient(135deg, #eef0f5 50%, #2348ff 50%);
+}
 .skin-option-copy {
   display: flex;
   flex-direction: column;

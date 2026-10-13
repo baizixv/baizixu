@@ -1,0 +1,36 @@
+/* 43 Skin: brutalist blueprint
+ * 粗野实验室的另一套配色：冷调近单色蓝，只保留一个暖色信号。
+ * 完全复用 31-35 的粗野结构，只覆盖颜色 Token。
+ */
+html[data-skin="brutalist-alt"] {
+  background: #eef0f5;
+}
+html[data-skin="brutalist-alt"] body {
+  --paper: #eef0f5;
+  --paper-deep: #dfe3ec;
+  --white: #ffffff;
+  --ink: #0d1220;
+  --muted: #4b5468;
+  --line: #0d1220;
+  --dark: #0d1220;
+  --blue: #2348ff;
+  --yellow: #ffb020;
+  --pink: #6d7bd6;
+  --green: #1f8fb0;
+  --accent-soft: #dde4ff;
+}
+html[data-skin="brutalist-alt"][data-theme="dark"] body,
+html[data-skin="brutalist-alt"] body.dark {
+  --paper: #0e1119;
+  --paper-deep: #171b26;
+  --white: #12161f;
+  --ink: #eef1f8;
+  --muted: #a3abbd;
+  --line: #eef1f8;
+  --dark: #080a10;
+  --blue: #6f86ff;
+  --yellow: #ffc043;
+  --pink: #93a0ea;
+  --green: #45b6d6;
+  --accent-soft: #1b2233;
+}
