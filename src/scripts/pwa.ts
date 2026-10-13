@@ -41,8 +41,10 @@ const setupPwa = () => {
   cleanupInstall?.();
 
   const themeColor = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+  const isDarkTheme = () =>
+    document.documentElement.dataset.theme === "dark" || document.body.classList.contains("dark");
   const updateThemeColor = () => {
-    if (themeColor) themeColor.content = document.body.classList.contains("dark") ? "#1b1d22" : "#f7f5f1";
+    if (themeColor) themeColor.content = isDarkTheme() ? "#131313" : "#f1ece0";
   };
   updateThemeColor();
   themeObserver = new MutationObserver(updateThemeColor);

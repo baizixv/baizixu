@@ -1,0 +1,145 @@
+/* 31 Brutalist core
+ * Neo-brutalist "lab" skin. Loaded after every base layer, so it only
+ * restates colors, borders, shadows and type — never layout. That keeps
+ * the restyle reversible and independent from the grid modules.
+ */
+:root {
+  --paper: #f1ece0;
+  --paper-deep: #e3dcc8;
+  --white: #fffdf3;
+  --ink: #111111;
+  --muted: #4c4840;
+  --line: #111111;
+  --dark: #111111;
+  --blue: #2b4bff;
+  --yellow: #ffd60a;
+  --pink: #ff4f86;
+  --green: #14b96b;
+  --accent-soft: #dde3ff;
+  --border: 2px solid var(--ink);
+  --shadow-sm: 3px 3px 0 var(--ink);
+  --shadow: 6px 6px 0 var(--ink);
+}
+html[data-theme="dark"] body,
+body.dark {
+  --paper: #131313;
+  --paper-deep: #1e1e1e;
+  --white: #1a1a1a;
+  --ink: #f2efe4;
+  --muted: #b4b0a4;
+  --line: #f2efe4;
+  --dark: #0a0a0a;
+  --blue: #8095ff;
+  --yellow: #ffd60a;
+  --pink: #ff6f9c;
+  --green: #2fd487;
+  --accent-soft: #232a45;
+  --shadow-sm: 3px 3px 0 var(--blue);
+  --shadow: 6px 6px 0 var(--blue);
+}
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+h1 em,
+.closing em,
+.about-preview-copy h2 em,
+.about-page h1 em {
+  color: var(--blue);
+}
+.eyebrow, .section-label, .mono, .kicker, .project-type, .library-kind {
+  font-family: "DM Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.media-type, .brand-copy small, .stats dt, .archive-row > .mono {
+  font-family: "DM Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.article-row > .mono, .idea-card-top, .idea-card-foot, .idea-archive-index {
+  font-family: "DM Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.about-meta, .library-item-meta, .progress-meta {
+  font-family: "DM Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.eyebrow {
+  color: var(--blue);
+  font-weight: 500;
+}
+.status-dot {
+  background: var(--green);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--green) 22%, transparent);
+}
+
+/* Shell ------------------------------------------------------------------ */
+.topbar {
+  border-bottom: 2px solid var(--ink);
+  background: var(--paper);
+}
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  background: var(--yellow);
+}
+.brand-copy strong {
+  font-weight: 800;
+}
+.main-nav {
+  gap: 0;
+}
+.main-nav a {
+  padding: 8px 13px;
+  border: 2px solid transparent;
+  font: 500 11px "DM Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.main-nav a:hover,
+.main-nav a.active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.icon-button {
+  border: 2px solid var(--ink);
+  background: var(--white);
+  color: var(--ink);
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.icon-button:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translate(-1px, -1px);
+}
+.search-wrap {
+  margin: 0;
+}
+.search-box {
+  height: 38px;
+  border: 2px solid var(--ink);
+  background: var(--white);
+  color: var(--ink);
+}
+.search-box:focus-within {
+  box-shadow: var(--shadow-sm);
+}
+kbd {
+  border: 2px solid var(--ink);
+  background: var(--yellow);
+  color: var(--ink);
+  font-weight: 700;
+}
+

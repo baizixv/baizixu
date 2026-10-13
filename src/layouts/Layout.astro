@@ -18,14 +18,14 @@ const { title = '白子诩 · 实验场', description = '白子诩的个人实�
     <script is:inline>
       (() => {
         try {
-          if (localStorage.getItem('bai-theme') === 'dark') document.documentElement.dataset.theme = 'dark';
+          if (JSON.parse(localStorage.getItem('bai-theme') || 'null') === 'dark') document.documentElement.dataset.theme = 'dark';
         } catch {
           // Ignore storage restrictions and keep the default light theme.
         }
       })();
     </script>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f7f5f1" />
+    <meta name="theme-color" content="#f1ece0" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />

@@ -1,0 +1,221 @@
+/* 35 Brutalist pages
+ * Detail, archive, library, about and standalone tool pages.
+ */
+.detail-page,
+.archive-page,
+.about-page,
+.library-page,
+.tools-page {
+  border-top: 0;
+}
+.detail-article h1,
+.archive-heading h1,
+.about-page h1 {
+  font-weight: 800;
+}
+.detail-lede {
+  border-bottom: 2px solid var(--ink);
+}
+.detail-cover {
+  border: 2px solid var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+.detail-body {
+  color: var(--ink);
+}
+.detail-body h2 {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 8px;
+}
+.detail-body table {
+  border: 2px solid var(--ink);
+}
+.detail-body th {
+  background: var(--ink);
+  color: var(--paper);
+}
+.detail-body td {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.detail-body tr:nth-child(even) td {
+  background: var(--paper-deep);
+}
+.detail-body code {
+  background: var(--paper-deep);
+  border: 1px solid var(--ink);
+  padding: 1px 5px;
+}
+.detail-body pre {
+  border: 2px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: var(--shadow-sm);
+}
+.detail-body blockquote {
+  border-left: 6px solid var(--blue);
+  background: var(--accent-soft);
+  padding: 4px 18px;
+}
+.detail-body img {
+  border: 2px solid var(--ink);
+}
+.next-link {
+  border-bottom: 2px solid var(--ink);
+}
+
+/* Archives */
+.archive-list,
+.archive-project-list,
+.idea-archive-list {
+  border-top: 3px solid var(--ink);
+}
+.archive-row,
+.archive-row:last-child,
+.archive-project-row,
+.archive-project-row:last-child,
+.idea-archive-row {
+  border-color: var(--ink);
+}
+.archive-project-visual {
+  border: 2px solid var(--ink);
+  background: var(--paper-deep) !important;
+}
+.archive-row h2,
+.archive-project-row h2 {
+  font-weight: 800;
+}
+
+/* Library catalogue + status */
+.library-catalog {
+  border-top: 3px solid var(--ink);
+}
+.library-catalog-group {
+  border-bottom: 2px solid var(--ink);
+}
+.library-catalog-icon {
+  border: 2px solid var(--ink);
+}
+.library-catalog-list {
+  border-top: 2px solid var(--ink);
+}
+.library-catalog-item {
+  border-top: 2px solid var(--ink);
+}
+.library-catalog-item h3::before {
+  width: 6px;
+}
+.media-type-badge {
+  border-width: 2px;
+}
+.media-status {
+  border: 2px solid var(--ink);
+}
+.library-status-group {
+  border: 2px solid var(--ink);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+.library-status-heading {
+  border-bottom: 2px solid var(--ink);
+}
+.library-status-heading,
+.media-type-badge,
+.media-status {
+  border-radius: 0;
+}
+
+/* About page */
+.about-author-block {
+  border-top: 3px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+.about-stats div {
+  border-left: 2px solid var(--ink);
+}
+.about-stats span {
+  font-weight: 800;
+}
+.about-progress,
+.about-releases {
+  border-top: 3px solid var(--ink);
+}
+.progress-item,
+.progress-item:last-child,
+.release-item,
+.release-item:last-child {
+  border-color: var(--ink);
+}
+.progress-status,
+.current-release {
+  border: 2px solid var(--ink);
+}
+.progress-blue {
+  background: var(--blue);
+  color: #fff;
+}
+.about-progress-bar {
+  height: 8px;
+  border: 2px solid var(--ink);
+  background: var(--paper-deep);
+}
+
+/* Idea detail */
+.idea-detail-icon {
+  border: 2px solid var(--ink);
+  background: var(--yellow);
+}
+.idea-version-current {
+  border: 2px solid var(--ink);
+}
+.idea-history {
+  border-top: 3px solid var(--ink);
+}
+.idea-history-list {
+  border-top: 2px solid var(--ink);
+}
+.idea-history-list a {
+  border-bottom: 2px solid var(--ink);
+}
+.idea-archive-empty {
+  border: 2px dashed var(--ink);
+}
+
+/* Standalone tool shell */
+.tool-workbench,
+.json-workbench {
+  border-top: 3px solid var(--ink);
+}
+.standalone-back-link {
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 2px solid var(--blue);
+  padding-bottom: 3px;
+}
+.standalone-tool-card h3,
+.standalone-tool-card p {
+  color: var(--ink);
+}
+.tool-panel-heading h2 {
+  font-weight: 800;
+}
+.tool-fields label > span,
+.json-column label,
+.tool-note,
+.json-status {
+  color: #b9b5a9;
+}
+.tool-fields textarea,
+.json-column textarea {
+  background: color-mix(in srgb, var(--dark) 82%, #000);
+  color: var(--paper);
+  border-color: var(--ink);
+  border-radius: 0;
+}
+.tool-fields textarea:focus,
+.json-column textarea:focus {
+  border-color: var(--yellow);
+}
+.standalone-back-link {
+  font-weight: 700;
+}

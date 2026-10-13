@@ -1,0 +1,132 @@
+/* 33 Brutalist sections
+ * Homepage hero, ticker, section rhythm and writing list.
+ */
+.hero {
+  padding-top: 70px;
+}
+.hero h1 {
+  font-weight: 800;
+}
+.hero-lede {
+  color: var(--muted);
+}
+.stats {
+  border-top: 2px solid var(--ink);
+}
+.stats dd {
+  font-weight: 800;
+}
+
+/* Hero "now" panel */
+.now-panel {
+  background: var(--white);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  box-shadow: 7px 7px 0 var(--blue);
+}
+.now-panel .section-label, .now-panel .kicker,
+.now-panel .now-note, .now-panel .progress-meta {
+  color: var(--muted);
+}
+.pulse-line {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+.now-image-wrap {
+  border: 2px solid var(--ink);
+}
+.now-image-wrap img {
+  filter: none;
+}
+.now-image-fallback {
+  background: var(--blue);
+  color: #fff;
+  font-weight: 800;
+}
+.image-tag {
+  border: 2px solid var(--ink);
+  background: var(--yellow);
+  color: var(--ink);
+  font-weight: 700;
+}
+.now-content:hover h2 {
+  color: var(--blue);
+}
+.arrow-circle {
+  border: 2px solid var(--ink);
+  border-radius: 0;
+}
+.progress {
+  height: 6px;
+  border: 2px solid var(--ink);
+  background: var(--paper-deep);
+}
+.progress span {
+  background: var(--blue);
+}
+
+/* Ticker */
+.ticker-band {
+  background: var(--blue);
+  color: #fff;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+.ticker-track {
+  font-weight: 700;
+}
+.ticker-track b {
+  color: var(--yellow);
+}
+
+/* Section rhythm */
+.content-section, .projects-section, .games-section,
+.media-library-section, .tools-section, .library-section,
+.ideas-section, .about-preview {
+  border-top: 2px solid var(--ink);
+}
+.section-heading h2 {
+  font-weight: 800;
+}
+.projects-section::before, .games-section::before,
+.media-library-section::before, .tools-section::before,
+.ideas-section::before {
+  width: 64px;
+  height: 6px;
+  border: 2px solid var(--ink);
+  background: var(--section-accent, var(--blue));
+}
+.projects-section {
+  background: var(--dark);
+  border-top-color: #111;
+}
+.games-section {
+  background: var(--paper);
+}
+.media-library-section {
+  background: var(--paper-deep);
+}
+.tools-section {
+  background: var(--paper);
+}
+.library-section {
+  background: var(--paper-deep);
+}
+.ideas-section {
+  background: color-mix(in srgb, var(--yellow) 34%, var(--paper));
+}
+.about-preview {
+  background: var(--paper);
+}
+
+/* Article + writing */
+.writing-feature {
+  border-top: 3px solid var(--ink);
+}
+.article-row, .article-row:last-child {
+  border-color: var(--ink);
+}
+.article-row h3 {
+  font-weight: 800;
+}
+

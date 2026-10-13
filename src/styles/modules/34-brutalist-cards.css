@@ -1,0 +1,254 @@
+/* 34 Brutalist cards
+ * Homepage cards, surfaces and dark-mode overrides.
+ */
+/* Projects & games */
+.project-visual {
+  border: 2px solid var(--ink);
+  box-shadow: var(--shadow-sm);
+  background: var(--white);
+}
+.project-card:hover .project-visual,
+.game-card:hover .project-visual {
+  box-shadow: var(--shadow);
+  transform: translate(-2px, -2px);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.projects-section .project-visual {
+  border: 2px solid var(--ink);
+}
+.projects-section .visual-ogden {
+  background: #e8d5b7;
+  color: #2c2416;
+}
+.projects-section .project-info, .projects-section .project-info h3,
+.projects-section .project-info p, .projects-section .project-info > svg,
+.projects-section .project-type, .projects-section .extension-tabs {
+  color: #efece2;
+}
+.projects-section .project-info {
+  border-bottom: 2px solid #efece2;
+}
+.projects-section .project-info p {
+  color: #b9b6ac;
+}
+.games-section .project-visual {
+  background: var(--paper-deep);
+  border: 2px solid var(--ink);
+}
+.game-card .project-visual,
+.game-archive-row .archive-project-visual {
+  background: var(--paper-deep);
+}
+.game-play {
+  border: 2px solid var(--ink);
+  background: var(--yellow);
+  box-shadow: var(--shadow-sm);
+  font-weight: 700;
+}
+.game-info {
+  border-bottom: 2px solid var(--ink);
+}
+.game-info h3 {
+  font-weight: 800;
+}
+.games-symbol, .tools-symbol {
+  border: 2px solid var(--ink);
+  border-radius: 0;
+}
+.games-symbol {
+  background: var(--pink);
+}
+.tools-symbol {
+  background: var(--green);
+}
+
+/* Bookmark library list */
+.library-list {
+  border-top: 3px solid var(--blue);
+}
+.library-row, .library-section .library-row {
+  border-bottom: 2px solid var(--ink);
+}
+.library-row:hover {
+  background: var(--accent-soft);
+}
+.library-icon {
+  border: 2px solid var(--ink);
+  border-radius: 0;
+}
+.blue-icon {
+  background: var(--blue);
+  color: #fff;
+}
+.yellow-icon {
+  background: var(--yellow);
+}
+.pink-icon {
+  background: var(--pink);
+}
+.green-icon {
+  background: var(--green);
+}
+
+/* Media cards */
+.media-library-section .media-card,
+.media-library-section .media-empty,
+.media-card, .media-empty {
+  border: 2px solid var(--ink);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+.media-card:hover,
+.media-empty:hover {
+  border-color: var(--ink);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow);
+}
+.media-card h3, .library-catalog-item h3 {
+  font-family: "Manrope", "Noto Sans SC", sans-serif;
+  font-weight: 800;
+}
+.media-card-mark {
+  border: 2px solid var(--ink);
+}
+.media-card-mark, .media-card > svg, .media-empty > svg {
+  color: var(--ink);
+}
+
+/* Tools */
+.tiny-tool-card,
+.standalone-tool-card {
+  border: 2px solid var(--ink);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+.tiny-tool-card:hover {
+  border-color: var(--ink);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow);
+}
+.tiny-tool-icon,
+.standalone-tool-icon {
+  border: 2px solid var(--ink);
+}
+.more-tool-card {
+  background: var(--yellow);
+  border-color: var(--ink);
+}
+.finance-directory-card {
+  background: var(--green);
+}
+.standalone-tool-card:hover {
+  background: var(--accent-soft);
+}
+.tool-panel {
+  border: 2px solid var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+.tool-tab.active {
+  border: 2px solid var(--ink);
+  border-left: 6px solid var(--blue);
+  background: var(--yellow);
+}
+.tool-tab:hover {
+  border: 2px solid var(--ink);
+  background: var(--white);
+}
+.tool-fields textarea,
+.json-column textarea {
+  border: 2px solid var(--ink);
+  border-radius: 0;
+}
+.tool-tab, .text-link, .button, .tiny-tool-card,
+.standalone-tool-card, .media-card, .idea-card {
+  border-radius: 0;
+}
+
+/* Ideas */
+.ideas-section .idea-card,
+.idea-card, .ideas-empty {
+  border: 2px solid var(--ink);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+.idea-card:hover {
+  border-color: var(--ink);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow);
+}
+.idea-status {
+  border: 2px solid var(--ink);
+  background: var(--yellow);
+}
+.ideas-empty-icon {
+  border: 2px solid var(--ink);
+  background: var(--yellow);
+}
+
+/* About preview */
+.about-preview-card {
+  border: 2px solid var(--ink);
+  background: var(--paper-deep);
+  box-shadow: var(--shadow-sm);
+}
+.about-avatar, .about-author-mark, .about-contact {
+  border: 2px solid var(--ink);
+  border-radius: 0;
+}
+.about-avatar,
+.about-author-mark {
+  background: var(--blue);
+  color: #fff;
+}
+
+/* Closing */
+.closing {
+  border-top: 2px solid var(--ink);
+}
+.closing h2 {
+  font-weight: 800;
+}
+.mail-button {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+/* Dark-mode surfaces (beat the earlier dark-only selectors) */
+html[data-theme="dark"] .games-section, body.dark .games-section,
+html[data-theme="dark"] .tools-section, body.dark .tools-section,
+html[data-theme="dark"] .about-preview, body.dark .about-preview {
+  background: var(--paper);
+}
+html[data-theme="dark"] .media-library-section, body.dark .media-library-section,
+html[data-theme="dark"] .library-section, body.dark .library-section {
+  background: var(--paper-deep);
+}
+html[data-theme="dark"] .games-section .project-visual,
+body.dark .games-section .project-visual {
+  background: var(--paper-deep);
+  border: 2px solid var(--ink);
+}
+html[data-theme="dark"] .media-library-section .media-card,
+html[data-theme="dark"] .media-library-section .media-empty,
+body.dark .media-library-section .media-card,
+body.dark .media-library-section .media-empty,
+html[data-theme="dark"] .ideas-section .idea-card,
+body.dark .ideas-section .idea-card {
+  background: var(--white);
+  border: 2px solid var(--ink);
+}
+html[data-theme="dark"] .ideas-section,
+body.dark .ideas-section {
+  background: color-mix(in srgb, var(--yellow) 12%, var(--paper));
+}
+
+@media (max-width: 900px) {
+  .projects-section::before, .games-section::before,
+  .media-library-section::before, .tools-section::before,
+  .ideas-section::before {
+    height: 5px;
+  }
+  .now-panel {
+    box-shadow: 4px 4px 0 var(--blue);
+  }
+}

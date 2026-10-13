@@ -50,3 +50,10 @@
 
 /* 游戏独立页（深色舞台） */
 @import './modules/30-lottery-reincarnation.css';
+
+/* 主题皮肤层（最后导入：只覆盖颜色/边框/阴影/字体，不改变布局） */
+@import './modules/31-brutalist-core.css';
+@import './modules/32-brutalist-ui.css';
+@import './modules/33-brutalist-sections.css';
+@import './modules/34-brutalist-cards.css';
+@import './modules/35-brutalist-pages.css';
