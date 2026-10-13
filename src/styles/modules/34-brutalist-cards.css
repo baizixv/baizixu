@@ -44,10 +44,8 @@
   background: #e8d5b7;
   color: #2c2416;
 }
-.projects-section .project-info,
-.projects-section .project-info h3,
-.projects-section .project-info > svg,
-.projects-section .project-type {
+.projects-section .project-info, .projects-section .project-info h3,
+.projects-section .project-info > svg, .projects-section .project-type {
   color: var(--ink);
 }
 .projects-section .project-info p {
@@ -58,11 +56,31 @@
   border-bottom: 0;
   padding: 26px 0 0;
 }
-.games-section .project-visual {
-  background: var(--paper-deep);
+.games-section .game-card {
+  background: var(--white);
   border: 2px solid var(--ink);
+  padding: 16px;
+  transition: transform 0.15s, box-shadow 0.15s;
 }
-.game-card .project-visual,
+.games-section .game-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow);
+}
+.games-section .game-card:hover .project-visual {
+  transform: none;
+  box-shadow: none;
+}
+.games-section .game-card .project-visual {
+  background: var(--paper-deep);
+  border: 0;
+  box-shadow: none;
+  height: auto;
+  aspect-ratio: 9 / 5;
+}
+.games-section .game-info {
+  border-bottom: 0;
+  padding: 26px 0 0;
+}
 .game-archive-row .archive-project-visual {
   background: var(--paper-deep);
 }
