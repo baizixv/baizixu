@@ -8,6 +8,13 @@ const setupSite = () => {
   cleanup?.();
 
   const body = document.body;
+  const isEn = document.documentElement.lang === "en";
+  const labels = {
+    darkMode: isEn ? "Switch to dark mode" : "切换深色模式",
+    lightMode: isEn ? "Switch to light mode" : "切换浅色模式",
+    skinStyle: isEn ? "Switch theme style" : "切换主题风格",
+    copied: isEn ? "Copied" : "已复制",
+  };
   const themeToggle = document.querySelector<HTMLButtonElement>("#theme-toggle");
   const savedTheme = readStorage<"dark" | "light">("bai-theme", "light");
   document.documentElement.dataset.theme = savedTheme;
@@ -24,7 +31,7 @@ const setupSite = () => {
   const syncThemeLabel = () => {
     themeToggle?.setAttribute(
       "aria-label",
-      body.classList.contains("dark") ? "切换浅色模式" : "切换深色模式",
+      body.classList.contains("dark") ? labels.lightMode : labels.darkMode,
     );
   };
   syncThemeLabel();
@@ -51,7 +58,7 @@ const setupSite = () => {
       syncThemeLabel();
     }
     skinOptions.forEach((item) => item.classList.toggle("active", item.dataset.skinOption === known));
-    skinButton?.setAttribute("aria-label", `切换主题风格（当前：${option?.name ?? known}）`);
+    skinButton?.setAttribute("aria-label", `${labels.skinStyle}（${option?.name ?? known}）`);
   };
   applySkin(readStorage<string>(themeStorageKey, defaultTheme), false);
   const onSkinToggle = () => setSkinPanelOpen(skinPanel?.hasAttribute("hidden") ?? false);
@@ -111,7 +118,7 @@ const setupSite = () => {
     }
     if (button) {
       const original = button.textContent ?? "";
-      button.textContent = "已复制";
+      button.textContent = labels.copied;
       button.classList.add("copied");
       window.setTimeout(() => {
         button.textContent = original;
@@ -119,7 +126,7 @@ const setupSite = () => {
       }, 1600);
     } else if (valueEl) {
       const original = valueEl.textContent ?? "";
-      valueEl.textContent = "已复制";
+      valueEl.textContent = labels.copied;
       window.setTimeout(() => {
         valueEl.textContent = original;
       }, 1600);

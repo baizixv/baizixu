@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+import Hero from '@/components/sections/Hero.astro';
+import WritingSection from '@/components/sections/WritingSection.astro';
+import IdeasSection from '@/components/sections/IdeasSection.astro';
+import ProjectsSection from '@/components/sections/ProjectsSection.astro';
+import ToolsSection from '@/components/sections/ToolsSection.astro';
+import GamesSection from '@/components/sections/GamesSection.astro';
+import LibrarySection from '@/components/sections/LibrarySection.astro';
+import MediaLibrarySection from '@/components/sections/MediaLibrarySection.astro';
+import AboutSection from '@/components/sections/AboutSection.astro';
+import Footer from '@/components/shared/Footer.astro';
+import Layout from '@/layouts/Layout.astro';
+import type { Lang } from '@/i18n/ui';
+import { localizeEntries, localizeEntry } from '@/lib/i18n-content';
+
+interface Props {
+  locale: Lang;
+  title?: string;
+  description?: string;
+}
+const { locale, title, description } = Astro.props;
+
+const entries = await getCollection('entries');
+const byKind = (kind: string) =>
+  entries.filter((entry) => entry.data.kind === kind).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const articles = byKind('article');
+const ideas = byKind('idea');
+const projects = byKind('project');
+const tools = byKind('tool');
+const games = byKind('game');
+const bookmarks = byKind('bookmark');
+const media = byKind('media');
+const latestEntry = entries
+  .filter((entry) => entry.data.kind !== 'idea-version')
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())[0];
+
+const buildDate = new Date();
+const formatShortDate = (date: Date) => `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+const stats = { articles: articles.length, projects: projects.length, tools: tools.length, lastUpdated: formatShortDate(buildDate) };
+const years = [...new Set(entries.map((entry) => entry.data.date.getFullYear()))].sort((a, b) => a - b);
+const period = years.length > 1 ? `${years[0]}—${years[years.length - 1]}` : `${years[0] ?? new Date().getFullYear()}`;
+
+const [current, localizedArticles, localizedIdeas, localizedProjects, localizedTools, localizedGames, localizedBookmarks, localizedMedia] = await Promise.all([
+  localizeEntry(latestEntry, locale),
+  localizeEntries(articles, locale),
+  localizeEntries(ideas, locale),
+  localizeEntries(projects, locale),
+  localizeEntries(tools, locale),
+  localizeEntries(games, locale),
+  localizeEntries(bookmarks, locale),
+  localizeEntries(media, locale),
+]);
+---
+<Layout title={title} description={description}>
+  <main id="top">
+    <Hero locale={locale} current={current} stats={stats} period={period} />
+    <ProjectsSection locale={locale} projects={localizedProjects} />
+    <GamesSection locale={locale} games={localizedGames} />
+    <MediaLibrarySection locale={locale} media={localizedMedia} />
+    <ToolsSection locale={locale} tools={localizedTools} />
+    <LibrarySection locale={locale} bookmarks={localizedBookmarks} />
+    <WritingSection locale={locale} articles={localizedArticles} />
+    <IdeasSection locale={locale} ideas={localizedIdeas} />
+    <AboutSection locale={locale} />
+    <Footer locale={locale} />
+  </main>
+</Layout>

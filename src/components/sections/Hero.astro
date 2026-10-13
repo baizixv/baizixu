@@ -1,56 +1,66 @@
 ---
 import { ArrowDownRight, ArrowUpRight } from 'lucide-astro';
-import type { CollectionEntry } from 'astro:content';
-import { about } from '@/data/about';
+import { getAbout } from '@/data/about';
+import type { Lang } from '@/i18n/ui';
+import { localizePath, useTranslations } from '@/i18n/utils';
+import type { LocalizedEntry } from '@/lib/i18n-content';
 
-type Entry = CollectionEntry<'entries'>;
 interface Props {
-  currentEntry: Entry;
+  locale: Lang;
+  current: LocalizedEntry;
   stats: { articles: number; projects: number; tools: number; lastUpdated: string };
   period: string;
 }
-const { currentEntry, stats, period } = Astro.props;
-const entryPath = currentEntry.data.kind === 'game'
-  ? `/games/${currentEntry.id.replace(/\.md$/, '')}/`
-  : currentEntry.data.kind === 'article'
-    ? `/articles/${currentEntry.id.replace(/\.md$/, '')}/`
-    : currentEntry.data.kind === 'idea'
-      ? `/ideas/${currentEntry.id.replace(/\.md$/, '')}/`
-      : currentEntry.data.demoUrl ?? `/projects/${currentEntry.id.replace(/\.md$/, '')}/`;
-const currentDate = currentEntry.data.date.toISOString().slice(5, 10).replace('-', '.');
-const progress = currentEntry.data.progress ?? (currentEntry.data.status === '已上线' ? 100 : undefined);
+const { locale, current, stats, period } = Astro.props;
+const t = useTranslations(locale);
+const about = getAbout(locale);
+const entry = current.entry;
+const slug = entry.id.replace(/\.md$/, '');
+const entryPath = localizePath(
+  entry.data.kind === 'game'
+    ? `/games/${slug}/`
+    : entry.data.kind === 'article'
+      ? `/articles/${slug}/`
+      : entry.data.kind === 'idea'
+        ? `/ideas/${slug}/`
+        : entry.data.demoUrl ?? `/projects/${slug}/`,
+  locale,
+);
+const currentDate = entry.data.date.toISOString().slice(5, 10).replace('-', '.');
+const progress = entry.data.progress ?? (entry.data.status === '已上线' ? 100 : undefined);
+const statusLabel = entry.data.status === '已上线' ? (locale === 'en' ? 'Live' : '已上线') : entry.data.status;
 ---
 <section class="hero section-wrap" id="now">
   <div class="hero-intro">
-    <p class="eyebrow"><span class="status-dot"></span>正在持续更新 <span class="mono">/ {period}</span></p>
-    <h1>把好奇心，<br /><em>做成可以访问的东西。</em></h1>
-    <p class="hero-lede">这里是白子诩的个人空间。记录代码之外的观察，整理反复使用的工具，也展示一些还在生长中的实验。</p>
+    <p class="eyebrow"><span class="status-dot"></span>{t('hero.eyebrow')} <span class="mono">/ {period}</span></p>
+    <h1>{t('hero.title')}<br /><em>{t('hero.titleAccent')}</em></h1>
+    <p class="hero-lede">{t('hero.lede')}</p>
     <div class="hero-links">
-      <a class="button button-dark" href="/articles/">浏览文章 <ArrowDownRight /></a>
-      <a class="text-link" href={`mailto:${about.email}`}>联系我 <ArrowUpRight /></a>
+      <a class="button button-dark" href={localizePath('/articles/', locale)}>{t('hero.browse')} <ArrowDownRight /></a>
+      <a class="text-link" href={`mailto:${about.email}`}>{t('hero.contact')} <ArrowUpRight /></a>
     </div>
     <dl class="stats">
-      <div><dt>文章</dt><dd>{stats.articles}</dd></div>
-      <div><dt>项目</dt><dd>{stats.projects}</dd></div>
-      <div><dt>工具</dt><dd>{stats.tools}</dd></div>
-      <div><dt>最后更新</dt><dd>{stats.lastUpdated}</dd></div>
+      <div><dt>{t('stats.articles')}</dt><dd>{stats.articles}</dd></div>
+      <div><dt>{t('stats.projects')}</dt><dd>{stats.projects}</dd></div>
+      <div><dt>{t('stats.tools')}</dt><dd>{stats.tools}</dd></div>
+      <div><dt>{t('stats.updated')}</dt><dd>{stats.lastUpdated}</dd></div>
     </dl>
   </div>
   <div class="now-panel">
-    <div class="now-head"><span class="section-label">NOW PLAYING</span><span class="pulse-line"></span></div>
+    <div class="now-head"><span class="section-label">{t('now.label')}</span><span class="pulse-line"></span></div>
     <div class="now-image-wrap">
-      {currentEntry.data.image ? <img src={currentEntry.data.image} alt={`${currentEntry.data.title} 封面`} width="900" height="620" /> : <div class="now-image-fallback">{currentEntry.data.title}</div>}
-      <span class="image-tag">UPDATED {currentDate}</span>
+      {entry.data.image ? <img src={entry.data.image} alt={`${current.title} cover`} width="900" height="620" /> : <div class="now-image-fallback">{current.title}</div>}
+      <span class="image-tag">{t('now.updated')} {currentDate}</span>
     </div>
     <a class="now-content" href={entryPath}>
-      <div><span class="kicker">最近在做</span><h2>{currentEntry.data.title}</h2></div>
+      <div><span class="kicker">{t('now.kicker')}</span><h2>{current.title}</h2></div>
       <span class="arrow-circle"><ArrowUpRight /></span>
     </a>
-    <p class="now-note">{currentEntry.data.description}</p>
-    {progress !== undefined && <><div class="progress"><span style={`width: ${progress}%`}></span></div><div class="progress-meta"><span>{currentEntry.data.status ?? '进度'}</span><span>{progress}%</span></div></>}
+    <p class="now-note">{current.description}</p>
+    {progress !== undefined && <><div class="progress"><span style={`width: ${progress}%`}></span></div><div class="progress-meta"><span>{statusLabel ?? t('now.progress')}</span><span>{progress}%</span></div></>}
   </div>
 </section>
 
-<section class="ticker-band" aria-label="站点主题">
+<section class="ticker-band" aria-label={t('nav.now')}>
   <div class="ticker-track"><span>BUILD IN PUBLIC</span><b>✳</b><span>THINK SLOWLY</span><b>✳</b><span>MAKE USEFUL THINGS</span><b>✳</b><span>BUILD IN PUBLIC</span><b>✳</b><span>THINK SLOWLY</span><b>✳</b><span>MAKE USEFUL THINGS</span></div>
 </section>

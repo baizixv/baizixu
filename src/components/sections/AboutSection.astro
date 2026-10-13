@@ -1,17 +1,26 @@
 ---
 import { ArrowUpRight, Mail } from 'lucide-astro';
-import { about } from '@/data/about';
+import { getAbout } from '@/data/about';
+import type { Lang } from '@/i18n/ui';
+import { localizePath, useTranslations } from '@/i18n/utils';
+
+interface Props {
+  locale: Lang;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const about = getAbout(locale);
 ---
 <section class="about-preview content-section section-wrap" id="about">
   <div class="about-preview-copy">
-    <p class="eyebrow">08 / ABOUT</p>
-    <h2>关于这个<br /><em>正在生长的地方</em></h2>
+    <p class="eyebrow">{t('about.eyebrow')}</p>
+    <h2>{t('about.heading')}<br /><em>{t('about.headingAccent')}</em></h2>
     <p>{about.intro}</p>
-    <a class="view-all" href="/about/">认识白子诩 <ArrowUpRight /></a>
+    <a class="view-all" href={localizePath('/about/', locale)}>{t('about.more')} <ArrowUpRight /></a>
   </div>
   <div class="about-preview-card">
     <div class="about-avatar">B</div>
     <div class="about-preview-info"><span class="project-type">{about.role}</span><strong>{about.location}</strong><small>{about.availability}</small></div>
-    <a class="about-contact" href={`mailto:${about.email}`} aria-label="发送邮件"><Mail /></a>
+    <a class="about-contact" href={`mailto:${about.email}`} aria-label={t('about.sendMail')}><Mail /></a>
   </div>
 </section>

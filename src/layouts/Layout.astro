@@ -2,6 +2,8 @@
 import { Download, Moon, Palette, Search, Sun } from 'lucide-astro';
 import ContactModal from '@/components/shared/ContactModal.astro';
 import { themes, defaultTheme } from '@/data/themes';
+import { defaultLang, languages, type Lang } from '@/i18n/ui';
+import { localizePath, switchLangPath, useTranslations } from '@/i18n/utils';
 import '../styles/global.css';
 
 interface Props {
@@ -9,10 +11,32 @@ interface Props {
   description?: string;
 }
 
-const { title = '白子诩 · 实验场', description = '白子诩的个人实验场：文章、工具、项目、游戏与收藏。' } = Astro.props;
+const locale = (Astro.currentLocale as Lang) ?? defaultLang;
+const t = useTranslations(locale);
+const { title = t('meta.title'), description = t('meta.description') } = Astro.props;
+
+/** 去掉语言前缀后的规范路径，用于判断导航激活态。 */
+const basePath = switchLangPath(Astro.url.pathname, defaultLang);
+const L = (path: string) => localizePath(path, locale);
+const nav = [
+  { key: 'nav.now', href: '/#now', active: basePath === '/' },
+  { key: 'nav.projects', href: '/#projects', active: basePath.startsWith('/projects') },
+  { key: 'nav.games', href: '/#games', active: basePath.startsWith('/games') },
+  { key: 'nav.library', href: '/library/', active: basePath.startsWith('/library') },
+  { key: 'nav.tools', href: '/#tools', active: basePath.startsWith('/tools') },
+  { key: 'nav.bookmarks', href: '/#bookmarks', active: false },
+  { key: 'nav.writing', href: '/#writing', active: basePath.startsWith('/articles') },
+  { key: 'nav.ideas', href: '/#ideas', active: basePath.startsWith('/ideas') },
+  { key: 'nav.about', href: '/about/', active: basePath.startsWith('/about') },
+] as const;
+const langLinks = (Object.keys(languages) as Lang[]).map((lng) => ({
+  lng,
+  label: lng === 'zh' ? '中' : 'EN',
+  href: switchLangPath(Astro.url.pathname, lng),
+}));
 ---
 <!doctype html>
-<html lang="zh-CN" data-skin={defaultTheme}>
+<html lang={locale} data-skin={defaultTheme}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,6 +59,9 @@ const { title = '白子诩 · 实验场', description = '白子诩的个人实�
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="白子诩" />
     <link rel="manifest" href="/manifest.webmanifest" />
+    {langLinks.map(({ lng, href }) => (
+      <link rel="alternate" hreflang={lng} href={new URL(href, Astro.site)} />
+    ))}
     <title>{title}</title>
     <link rel="icon" type="image/png" href="/assets/favicon.png" />
     <link rel="icon" href="/assets/favicon.ico" sizes="any" />
@@ -46,39 +73,33 @@ const { title = '白子诩 · 实验场', description = '白子诩的个人实�
   <body>
     <div class="site-shell">
       <header class="topbar">
-        <a class="brand" href="/" aria-label="返回首页">
+        <a class="brand" href={L('/')} aria-label={t('footer.top')}>
           <span class="brand-mark"><img src="/assets/logo-mark.png" alt="" width="35" height="35" /></span>
           <span class="brand-copy"><strong>白子诩</strong><small>lab</small></span>
         </a>
-        <nav class="main-nav" aria-label="主导航">
-          <a class:list={{ active: Astro.url.pathname === '/' }} href="/#now">现在</a>
-          <a href="/#projects">项目</a>
-          <a href="/#games">游戏</a>
-          <a class:list={{ active: Astro.url.pathname.startsWith('/library') }} href="/library/">图书馆</a>
-          <a href="/#tools">工具</a>
-          <a href="/#bookmarks">外链</a>
-          <a class:list={{ active: Astro.url.pathname.startsWith('/articles') }} href="/#writing">文章</a>
-          <a class:list={{ active: Astro.url.pathname.startsWith('/ideas') }} href="/#ideas">想法</a>
-          <a class:list={{ active: Astro.url.pathname.startsWith('/about') }} href="/about/">关于</a>
+        <nav class="main-nav" aria-label="Main">
+          {nav.map((item) => (
+            <a class:list={{ active: item.active }} href={L(item.href)}>{t(item.key)}</a>
+          ))}
         </nav>
         <div class="top-actions">
-          <button class="icon-button" id="install-button" type="button" aria-label="下载并安装应用" title="下载并安装应用" hidden>
+          <button class="icon-button" id="install-button" type="button" aria-label={t('install.label')} title={t('install.label')} hidden>
             <Download aria-hidden="true" />
           </button>
           <div class="search-wrap">
             <label class="search-box" for="site-search">
               <Search aria-hidden="true" />
-              <input id="site-search" type="search" placeholder="搜索内容" autocomplete="off" />
+              <input id="site-search" type="search" placeholder={t('search.placeholder')} autocomplete="off" />
               <kbd>/</kbd>
             </label>
             <div class="search-panel" id="search-panel" hidden></div>
           </div>
           <div class="skin-menu" id="skin-menu">
-            <button class="icon-button" id="skin-button" type="button" aria-label="切换主题风格" title="切换主题风格" aria-haspopup="true" aria-expanded="false">
+            <button class="icon-button" id="skin-button" type="button" aria-label={t('theme.skin')} title={t('theme.skin')} aria-haspopup="true" aria-expanded="false">
               <Palette aria-hidden="true" />
             </button>
             <div class="skin-panel" id="skin-panel" hidden>
-              <p class="skin-panel-title">主题风格</p>
+              <p class="skin-panel-title">{t('theme.skin')}</p>
               {themes.map((option) => (
                 <button class="skin-option" type="button" data-skin-option={option.id}>
                   <span class="skin-swatch" data-swatch={option.id} aria-hidden="true"></span>
@@ -87,7 +108,12 @@ const { title = '白子诩 · 实验场', description = '白子诩的个人实�
               ))}
             </div>
           </div>
-          <button class="icon-button" id="theme-toggle" type="button" aria-label="切换深色模式" title="切换深色模式">
+          <div class="lang-switch" role="group" aria-label={t('lang.switch')}>
+            {langLinks.map(({ lng, label, href }) => (
+              <a href={href} hreflang={lng} aria-current={lng === locale ? 'true' : undefined}>{label}</a>
+            ))}
+          </div>
+          <button class="icon-button" id="theme-toggle" type="button" aria-label={t('theme.toggle.dark')} title={t('theme.toggle.dark')}>
             <Sun class="theme-sun" aria-hidden="true" />
             <Moon class="theme-moon" aria-hidden="true" />
           </button>
@@ -95,7 +121,7 @@ const { title = '白子诩 · 实验场', description = '白子诩的个人实�
       </header>
       <slot />
     </div>
-    <ContactModal />
+    <ContactModal locale={locale} />
     <script src="../scripts/site.ts"></script>
     <script src="../scripts/pwa.ts"></script>
   </body>

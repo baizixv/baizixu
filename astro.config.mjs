@@ -5,5 +5,12 @@ export default defineConfig({
   output: 'static',
   build: {
     format: 'directory'
+  },
+  i18n: {
+    defaultLocale: 'zh',
+    locales: ['zh', 'en'],
+    routing: {
+      prefixDefaultLocale: false
+    }
   }
 });

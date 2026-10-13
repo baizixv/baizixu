@@ -1,29 +1,34 @@
 ---
 import { ArrowUpRight } from 'lucide-astro';
-import type { CollectionEntry } from 'astro:content';
+import type { Lang } from '@/i18n/ui';
+import { localizePath, useTranslations } from '@/i18n/utils';
+import type { LocalizedEntry } from '@/lib/i18n-content';
 
-type Entry = CollectionEntry<'entries'>;
-interface Props { articles: Entry[]; }
-const { articles } = Astro.props;
-const featured = articles.find((article) => article.data.featured) ?? articles[0];
-const others = articles.filter((article) => article.id !== featured?.id).slice(0, 3);
+interface Props {
+  locale: Lang;
+  articles: LocalizedEntry[];
+}
+const { locale, articles } = Astro.props;
+const t = useTranslations(locale);
+const featured = articles.find(({ entry }) => entry.data.featured) ?? articles[0];
+const others = articles.filter(({ entry }) => entry.id !== featured?.entry.id).slice(0, 3);
 const formatDate = (date: Date) => date.toISOString().slice(5, 10).replace('-', '.');
 ---
 <section class="content-section section-wrap" id="writing">
   <div class="section-heading">
-    <div><p class="eyebrow">06 / WORDS</p><h2>最近写下的</h2></div>
-    <a class="view-all" href="/articles/">查看全部 <ArrowUpRight /></a>
+    <div><p class="eyebrow">{t('writing.eyebrow')}</p><h2>{t('writing.heading')}</h2></div>
+    <a class="view-all" href={localizePath('/articles/', locale)}>{t('writing.viewAll')} <ArrowUpRight /></a>
   </div>
   {featured && <div class="content-grid searchable-group">
-    <article class="writing-feature searchable-item" data-search={`${featured.data.title} ${featured.data.description} ${featured.data.tag ?? ''}`}>
-      <div class="article-meta"><span class={`tag tag-${featured.data.color ?? 'blue'}`}>{featured.data.tag}</span><span class="mono">{formatDate(featured.data.date)} · {featured.data.minutes}</span></div>
-      <h3>{featured.data.title}</h3>
-      <p>{featured.data.description}</p>
-      <a class="circle-link" href={`/articles/${featured.id.replace(/\.md$/, '')}/`} aria-label={`阅读：${featured.data.title}`}><ArrowUpRight /></a>
+    <article class="writing-feature searchable-item" data-search={`${featured.title} ${featured.description} ${featured.entry.data.tag ?? ''}`}>
+      <div class="article-meta"><span class={`tag tag-${featured.entry.data.color ?? 'blue'}`}>{featured.entry.data.tag}</span><span class="mono">{formatDate(featured.entry.data.date)} · {featured.entry.data.minutes}</span></div>
+      <h3>{featured.title}</h3>
+      <p>{featured.description}</p>
+      <a class="circle-link" href={localizePath(`/articles/${featured.entry.id.replace(/\.md$/, '')}/`, locale)} aria-label={featured.title}><ArrowUpRight /></a>
     </article>
     <div class="article-list">
-      {others.map((article) => <a class="article-row searchable-item" data-search={`${article.data.title} ${article.data.description} ${article.data.tag ?? ''}`} href={`/articles/${article.id.replace(/\.md$/, '')}/`}>
-        <div><span class={`tag tag-${article.data.color ?? 'blue'}`}>{article.data.tag}</span><h3>{article.data.title}</h3><p>{article.data.description}</p></div><span class="mono">{formatDate(article.data.date)}</span><ArrowUpRight />
+      {others.map(({ entry, title, description }) => <a class="article-row searchable-item" data-search={`${title} ${description} ${entry.data.tag ?? ''}`} href={localizePath(`/articles/${entry.id.replace(/\.md$/, '')}/`, locale)}>
+        <div><span class={`tag tag-${entry.data.color ?? 'blue'}`}>{entry.data.tag}</span><h3>{title}</h3><p>{description}</p></div><span class="mono">{formatDate(entry.data.date)}</span><ArrowUpRight />
       </a>)}
     </div>
   </div>}

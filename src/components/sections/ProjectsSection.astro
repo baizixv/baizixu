@@ -1,23 +1,28 @@
 ---
 import { ArrowUpRight } from 'lucide-astro';
-import type { CollectionEntry } from 'astro:content';
+import type { Lang } from '@/i18n/ui';
+import { localizePath, useTranslations } from '@/i18n/utils';
+import type { LocalizedEntry } from '@/lib/i18n-content';
 
-type Entry = CollectionEntry<'entries'>;
-interface Props { projects: Entry[]; }
-const { projects } = Astro.props;
+interface Props {
+  locale: Lang;
+  projects: LocalizedEntry[];
+}
+const { locale, projects } = Astro.props;
+const t = useTranslations(locale);
 ---
 <section class="content-section projects-section" id="projects">
   <div class="section-wrap">
     <div class="section-heading light-heading">
-      <div><p class="eyebrow">01 / PROJECTS</p><h2>项目区</h2></div>
-      <a class="view-all" href="/projects/">查看全部项目 <ArrowUpRight /></a>
+      <div><p class="eyebrow">{t('projects.eyebrow')}</p><h2>{t('projects.heading')}</h2></div>
+      <a class="view-all" href={localizePath('/projects/', locale)}>{t('projects.viewAll')} <ArrowUpRight /></a>
     </div>
     <div class="project-grid searchable-group">
-      {projects.map((project) => <a class="project-card searchable-item" data-search={`${project.data.title} ${project.data.description} ${project.data.label ?? ''}`} href={`/projects/${project.id.replace(/\.md$/, '')}/`}>
-        <div class={`project-visual visual-${project.data.visual}`}>
-          {project.data.image ? <img src={project.data.image} alt={`${project.data.title} 项目封面`} loading="lazy" width="900" height="600" /> : <span class="game-fallback-mark">{project.data.title}</span>}
+      {projects.map(({ entry, title, description }) => <a class="project-card searchable-item" data-search={`${title} ${description} ${entry.data.label ?? ''}`} href={localizePath(`/projects/${entry.id.replace(/\.md$/, '')}/`, locale)}>
+        <div class={`project-visual visual-${entry.data.visual}`}>
+          {entry.data.image ? <img src={entry.data.image} alt={`${title}`} loading="lazy" width="900" height="600" /> : <span class="game-fallback-mark">{title}</span>}
         </div>
-        <div class="project-info"><div><span class="project-type">{project.data.label}</span><h3>{project.data.title}</h3><p>{project.data.description}</p></div><ArrowUpRight /></div>
+        <div class="project-info"><div><span class="project-type">{entry.data.label}</span><h3>{title}</h3><p>{description}</p></div><ArrowUpRight /></div>
       </a>)}
     </div>
   </div>
