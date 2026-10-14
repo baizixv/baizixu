@@ -15,6 +15,11 @@
   background: var(--ink);
   color: var(--paper);
 }
+/* 邮件按钮里就是邮箱地址，保持原始大小写，不做大写转换。 */
+.mail-button {
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
 .button:hover, .mail-button:hover, .game-launch:hover {
   transform: translate(-2px, -2px);
   box-shadow: var(--shadow);
