@@ -51,9 +51,13 @@
   .top-actions {
     min-width: auto;
   }
-  .search-box {
+  .topbar .search-box {
     width: 40px;
-    padding: 0 11px;
+    padding: 0;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
   }
   .search-box input,
   .search-box kbd {
