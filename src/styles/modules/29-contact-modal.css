@@ -43,8 +43,12 @@ body.modal-open {
   font-family: "DM Mono", monospace;
   font-size: 11px;
   color: var(--muted);
-  width: 40px;
-  flex: 0 0 40px;
+  width: 46px;
+  flex: 0 0 46px;
+}
+.contact-value[data-copy]:hover,
+.contact-value[href]:hover {
+  color: var(--blue);
 }
 .contact-value {
   font-size: 13px;

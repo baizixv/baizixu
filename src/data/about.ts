@@ -7,6 +7,7 @@ const zh = {
   location: '远程工作',
   availability: '目前接受有趣的小型合作',
   email: 'bai.zixu@foxmail.com',
+  github: 'https://github.com/baizixv',
   stats: [
     { label: '开始记录', value: '2021' },
     { label: '公开项目', value: '12' },
@@ -29,6 +30,7 @@ const en: typeof zh = {
   location: 'Remote',
   availability: 'Open to interesting small collaborations',
   email: 'bai.zixu@foxmail.com',
+  github: 'https://github.com/baizixv',
   stats: [
     { label: 'Started', value: '2021' },
     { label: 'Public projects', value: '12' },

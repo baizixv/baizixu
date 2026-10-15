@@ -60,10 +60,14 @@
     10px "DM Mono",
     monospace;
 }
-.about-meta span {
+.about-meta span,
+.about-meta a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+}
+.about-meta a:hover {
+  color: var(--ink);
 }
 .about-meta svg {
   width: 13px;

@@ -155,6 +155,7 @@
 .footer-records {
   display: flex;
   justify-content: center;
+  gap: 18px;
   padding: 0 0 22px;
 }
 .footer-record {

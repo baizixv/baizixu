@@ -1,5 +1,5 @@
 ---
-import { ArrowUpRight, Check, Clock3, Compass, Mail, Sparkles } from 'lucide-astro';
+import { ArrowUpRight, Check, Clock3, Compass, Github, Mail, Sparkles } from 'lucide-astro';
 import Layout from '@/layouts/Layout.astro';
 import { about } from '@/data/about';
 ---
@@ -12,7 +12,7 @@ import { about } from '@/data/about';
 
     <section class="about-author-block">
       <div class="about-author-mark">B</div>
-      <div class="about-author-copy"><p class="eyebrow">THE PERSON BEHIND IT</p><h2>{about.name}</h2><p>{about.intro}</p><div class="about-meta"><span><Compass /> {about.location}</span><span><Sparkles /> {about.availability}</span></div></div>
+      <div class="about-author-copy"><p class="eyebrow">THE PERSON BEHIND IT</p><h2>{about.name}</h2><p>{about.intro}</p><div class="about-meta"><span><Compass /> {about.location}</span><span><Sparkles /> {about.availability}</span><a href={about.github} target="_blank" rel="noreferrer"><Github /> GitHub</a></div></div>
       <a class="mail-button" href={`mailto:${about.email}`}><Mail /><span>{about.email}</span><ArrowUpRight /></a>
     </section>
 

@@ -25,6 +25,10 @@ const about = getAbout(locale);
       <button class="contact-copy" type="button" data-copy={about.email}>{t('contact.copy')}</button>
     </div>
     <div class="contact-row">
+      <span class="contact-label">GitHub</span>
+      <a class="contact-value" href={about.github} target="_blank" rel="noreferrer">@baizixv</a>
+    </div>
+    <div class="contact-row">
       <span class="contact-label">{t('contact.location')}</span>
       <span class="contact-value">{about.location}</span>
     </div>
