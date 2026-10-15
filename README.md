@@ -86,6 +86,13 @@ The reference project uses GNU GPL v3. This implementation uses independent code
 - `kind: media` is used for library entries, distinguishing books, screen, music and games via `mediaType: book | screen | music | game`, and may add creator/director, year, rating, book word count, `color` for a visual theme and an external link; book titles always use the Chinese title marks.
 - Ogden 850 is an independently implemented English learning project; data lives in `public/data/ogden850.json` and progress and saved words stay in browser `localStorage`.
 
+## Versioning
+
+- The version has a single source: `version` in `package.json`. The About page reads it directly (`currentVersion`).
+- The changelog lives in `src/data/about.ts` under `releases` (Chinese and English); its **first entry must match** `package.json`.
+- `npm run check:version` verifies they match and is already part of `npm run build`, so a forgotten bump fails the build.
+- To release: bump `package.json` and add a matching release entry at the top of `releases` in both languages.
+
 ## Deployment
 
 - **Vercel**: import the repo, set Framework Preset to `Astro`, Build Command to `npm run build`, Output Directory to `dist`.

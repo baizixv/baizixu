@@ -99,6 +99,7 @@ CSS 模块的编号即导入顺序（层叠顺序），需要覆盖已有规则�
 
 ```bash
 npm run check:structure
+npm run check:version
 npm run check
 npm run build
 

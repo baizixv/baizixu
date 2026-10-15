@@ -86,6 +86,13 @@ python3 scripts/generate_assets.py
 - `kind: media` 用于图书馆条目，通过 `mediaType: book | screen | music | game` 区分书籍、影视剧、音乐和游戏，可补充作者/导演、年份、评分、书籍字数、`color` 区分视觉主题和外部链接；书名展示统一使用中文书名号。
 - Ogden 850 是独立实现的英语学习项目，数据放在 `public/data/ogden850.json`，学习进度和收藏只保存在浏览器 `localStorage`。
 
+## 版本
+
+- 版本号只有一个来源：`package.json` 的 `version`；关于页的“当前版本”直接读取它（`currentVersion`）。
+- 版本说明（changelog）放在 `src/data/about.ts` 的 `releases`，中英各一份，**最新一条必须与 `package.json` 一致**。
+- `npm run check:version` 会校验两者一致，并已包含在 `npm run build` 里；忘了改会被构建拦住。
+- 发布时：改 `package.json` 的版本号，并在 `releases` 顶部（中英各加一条）补上对应版本说明。
+
 ## 部署
 
 - **Vercel**：导入仓库，Framework Preset 选择 `Astro`，Build Command 使用 `npm run build`，Output Directory 使用 `dist`。
