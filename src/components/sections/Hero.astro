@@ -9,9 +9,8 @@ interface Props {
   locale: Lang;
   current: LocalizedEntry;
   stats: { articles: number; projects: number; tools: number; lastUpdated: string };
-  period: string;
 }
-const { locale, current, stats, period } = Astro.props;
+const { locale, current, stats } = Astro.props;
 const t = useTranslations(locale);
 const about = getAbout(locale);
 const entry = current.entry;
@@ -32,7 +31,7 @@ const statusLabel = entry.data.status === '已上线' ? (locale === 'en' ? 'Live
 ---
 <section class="hero section-wrap" id="now">
   <div class="hero-intro">
-    <p class="eyebrow"><span class="status-dot"></span>{t('hero.eyebrow')} <span class="mono">/ {period}</span></p>
+    <p class="eyebrow"><span class="status-dot"></span>{t('hero.eyebrow')}</p>
     <h1>{t('hero.title')}<br /><em>{t('hero.titleAccent')}</em></h1>
     <p class="hero-lede">{t('hero.lede')}</p>
     <div class="hero-links">

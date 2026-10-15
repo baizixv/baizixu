@@ -38,8 +38,6 @@ const latestEntry = entries
 const buildDate = new Date();
 const formatShortDate = (date: Date) => `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
 const stats = { articles: articles.length, projects: projects.length, tools: tools.length, lastUpdated: formatShortDate(buildDate) };
-const years = [...new Set(entries.map((entry) => entry.data.date.getFullYear()))].sort((a, b) => a - b);
-const period = years.length > 1 ? `${years[0]}—${years[years.length - 1]}` : `${years[0] ?? new Date().getFullYear()}`;
 
 const [current, localizedArticles, localizedIdeas, localizedProjects, localizedTools, localizedGames, localizedBookmarks, localizedMedia] = await Promise.all([
   localizeEntry(latestEntry, locale),
@@ -54,7 +52,7 @@ const [current, localizedArticles, localizedIdeas, localizedProjects, localizedT
 ---
 <Layout title={title} description={description}>
   <main id="top">
-    <Hero locale={locale} current={current} stats={stats} period={period} />
+    <Hero locale={locale} current={current} stats={stats} />
     <ProjectsSection locale={locale} projects={localizedProjects} />
     <GamesSection locale={locale} games={localizedGames} />
     <MediaLibrarySection locale={locale} media={localizedMedia} />
